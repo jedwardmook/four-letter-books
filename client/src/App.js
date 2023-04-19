@@ -1,9 +1,10 @@
+import AddBook from './AddBook';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello from App</h1>
+      <AddBook/>
     </div>
   );
 }
