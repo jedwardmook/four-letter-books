@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import SearchBook from './SearchBook'
 
 function AddBook() {
-  const[isbn, setIsbn] = useState('')
+  const[isbn, setIsbn] = useState()
   const[title, setTitle] = useState('')
     //component for adding books
   return (
@@ -11,7 +11,7 @@ function AddBook() {
           placeholder="ISBN"
           value={isbn}
           onChange={(e) => setIsbn(e.target.value)}
-          fetchAddress="http://openlibrary.org/api/volumes/brief/isbn/"
+          fetchAddress="http://openlibrary.org/isbn/"
           />
         <SearchBook 
           placeholder="Title"
