@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 function SearchBook({placeholder, value, onChange, fetchAddress}) {
   const [book, setBook] = useState()
   const [author, setAuthor] = useState()
+  const [formDiv, setFormDiv] = useState(false)
 
   function submitSearch(e){
     e.preventDefault()
@@ -11,7 +12,8 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
       .then((data) => {
         setBook(data)
         console.log(data)
-        splitAuthor(data)});
+        splitAuthor(data)
+        setFormDiv(true)});
     };
 
   function splitAuthor(book){
@@ -29,14 +31,22 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
       })
   }
 
+  function showAddForm(){
+    setFormDiv(!formDiv)
+  }
+
   return (
-    <form onSubmit={submitSearch}>
-      <input
+    <div>
+      <form onSubmit={submitSearch}>
+        <input
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-      />
-      <button>Search</button>
+        />
+        <button>Search</button>
+      </form>
+      <button onClick={showAddForm}>Add Book Manually</button>
+      {formDiv&&
       <div>
         <form>
           <input
@@ -44,12 +54,28 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
             value={book&& book.title}
           />
           <input
+            placeholder='Subtitle'
+            value={book&& book.subtitle}
+          />
+          <input
             placeholder='Author'
             value={author&& author.name}
           />
+          <input
+            placeholder='Publisher'
+            value={book&& book.publishers}
+          />
+          <input
+            placeholder='Published Date'
+            value={book&& book.publish_date}
+          />
+          <input
+            placeholder='Format'
+            value={book&& book.physical_format}
+          />
         </form>
-      </div>
-    </form>
+      </div>}
+    </div>
   )
 }
 

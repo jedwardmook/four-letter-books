@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import SearchBook from './SearchBook'
 
 function AddBook() {
-  const[isbn, setIsbn] = useState()
+  const[isbn, setIsbn] = useState('')
     
   //component for adding books
   return (
