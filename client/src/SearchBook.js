@@ -37,8 +37,18 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
         onChange={onChange}
       />
       <button>Search</button>
-      {book&& <h1>{book.title}</h1>}
-      {author&& <h3>{author.name}</h3>}
+      <div>
+        <form>
+          <input
+            placeholder='Title'
+            value={book&& book.title}
+          />
+          <input
+            placeholder='Author'
+            value={author&& author.name}
+          />
+        </form>
+      </div>
     </form>
   )
 }
