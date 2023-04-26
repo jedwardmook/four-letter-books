@@ -25,9 +25,10 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
     };
 
   function splitAuthor(book){
-    const author = Object.values(book.authors[0])
-    console.log(author)
-    fetchAuthor(author)
+    if (book.authors){
+      const author = Object.values(book.authors[0])
+      console.log(author)
+      fetchAuthor(author)}
   }
 
   function fetchAuthor(author){
@@ -60,6 +61,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
           <input
             placeholder='Title'
             value={book? book.title: title}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <input
             placeholder='Subtitle'
