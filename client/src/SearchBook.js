@@ -15,19 +15,24 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
   const [price, setPrice] = useState('')
 
 
-  function submitSearch(e){
+  const submitSearch = async (e) => {
     e.preventDefault()
-    fetch(`${fetchAddress}${value}.json`)
-      .then(response => response.json())
-      .then((data) => {
-        setBook(data)
-        console.log(data)
-        splitAuthor(data)
-        splitWork(data)
-        setIsbnFormDiv(true)});
+    try {
+      const response = await fetch(`${fetchAddress}${value}.json`);
+      const data = await response.json();
+      // .then(response => response.json())
+      // .then((data) => {
+      setBook(data)
+      console.log(data);
+      splitAuthor(data);
+      splitWork(data);
+      setIsbnFormDiv(true);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
-  function splitAuthor(book){
+  const splitAuthor= (book) => {
     if (book.authors){
       const author = Object.values(book.authors[0])
       fetchAuthor(author)}
@@ -45,22 +50,26 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
     }
   }
   
-  function fetchAuthor(author){
-    fetch(`http://openlibrary.org${author}.json`)
-    .then(response => response.json())
-      .then((data) => {
-        setAuthor(data)
-        console.log(data)
-      })
+  const fetchAuthor = async (author) => {
+    try {
+    const response = await fetch(`http://openlibrary.org${author}.json`);
+    const data = await response.json();
+      setAuthor(data)
+      console.log(data)
+    } catch (error) {
+        console.log(error)
+      }
   }
 
-  function fetchWork(work){
-    fetch(`http://openlibrary.org${work}.json`)
-    .then(response => response.json())
-      .then((data) => {
-        setWork(data)
-        console.log(data)
-      })
+  const fetchWork = async (work) => {
+    try {
+    const response = await fetch(`http://openlibrary.org${work}.json`);
+    const data = await response.json();
+      setWork(data);
+      console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
   }
 
   function showAddForm(){
