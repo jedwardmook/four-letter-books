@@ -1,33 +1,22 @@
 import React, { useState } from 'react'
+import AddForm from './AddForm'
 
 function SearchBook({placeholder, value, onChange, fetchAddress}) {
   const [book, setBook] = useState('')
-  const [author, setAuthor] = useState()
-  const [work, setWork] = useState()
+  const [author, setAuthor] = useState('')
+  const [work, setWork] = useState('')
   const [isbnFormDiv, setIsbnFormDiv] = useState(false)
-  const [title, setTitle] = useState('')
-  const [subtitle, setSubtitle] = useState('')
-  const [authorName, setAuthorName] = useState('')
-  const [description, setDescription] = useState('')
-  const [publisher, setPublisher] = useState('')
-  const [publishDate, setPublishDate] = useState('')
-  const [physicalFormat, setPhysicalFormat] = useState('')
-  const [price, setPrice] = useState('')
-
 
   const submitSearch = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch(`${fetchAddress}${value}.json`);
-      const data = await response.json();
-      // .then(response => response.json())
-      // .then((data) => {
+    const response = await fetch(`${fetchAddress}${value}.json`);
+    const data = await response.json();
       setBook(data)
       console.log(data);
       splitAuthor(data);
       splitWork(data);
-      setIsbnFormDiv(true);
-      } catch (error) {
+    } catch (error) {
         console.log(error);
       }
     };
@@ -67,6 +56,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
     const data = await response.json();
       setWork(data);
       console.log(data);
+      setIsbnFormDiv(true);
     } catch (error) {
         console.log(error);
     }
@@ -89,7 +79,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
       <button onClick={showAddForm}>Add Book Manually</button>
       {isbnFormDiv&&
       <div>
-        <form>
+        {/* <form>
           <input
             placeholder='Title'
             value={book? book.title: title}
@@ -130,7 +120,12 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
             value={book? book.price: price}
             onChange={(e) => setPrice(e.target.value)}
           />
-        </form>
+        </form> */}
+        <AddForm 
+          book={book}
+          author={author}
+          work={work}
+          />
       </div>}
     </div>
   )
