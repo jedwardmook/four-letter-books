@@ -12,7 +12,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
     try {
     const response = await fetch(`${fetchAddress}${value}.json`);
     const data = await response.json();
-      setBook(data)
+      setBook(data);
       console.log(data);
       splitAuthor(data);
       splitWork(data);
@@ -43,8 +43,8 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
     try {
     const response = await fetch(`http://openlibrary.org${author}.json`);
     const data = await response.json();
-      setAuthor(data)
-      console.log(data)
+      setAuthor(data);
+      console.log(data);
     } catch (error) {
         console.log(error)
       }

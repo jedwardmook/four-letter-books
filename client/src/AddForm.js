@@ -1,36 +1,40 @@
 import React, { useState } from 'react'
 
 function AddForm({book, author, work}) {
-    const [title, setTitle] = useState(book.title)
-    const [subtitle, setSubtitle] = useState(book.subtitle)
-    const [name, setName] = useState(author.name)
-    const [description, setDescription] = useState(work.description.value)
-    const [publisher, setPublisher] = useState(book.publishers)
-    const [publishDate, setPublishDate] = useState(book.publish_date)
-    const [physicalFormat, setPhysicalFormat] = useState(book.physical_format)
-    const [price, setPrice] = useState(book.price)
+    const {title, subtitle, publishers, publish_date, physical_format} = book
+    const {description} = work
+    const {name} = author
+    
+    const [bookTitle, setBookTitle] = useState(title)
+    const [bookSubtitle, setBookSubtitle] = useState(subtitle)
+    const [authorName, setAuthorName] = useState(name)
+    const [bookDescription, setBookDescription] = useState(description)
+    const [publisher, setPublisher] = useState(publishers)
+    const [publishDate, setPublishDate] = useState(publish_date)
+    const [physicalFormat, setPhysicalFormat] = useState(physical_format)
+    const [price, setPrice] = useState()
   
     return (
     <form>
           <input
             placeholder='Title'
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={bookTitle}
+            onChange={(e) => setBookTitle(e.target.value)}
           />
           <input
             placeholder='Subtitle'
-            value={subtitle}
-            onChange={(e) => setSubtitle(e.target.value)}
+            value={bookSubtitle}
+            onChange={(e) => setBookSubtitle(e.target.value)}
           />
           <input
             placeholder='Author'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={authorName}
+            onChange={(e) => setAuthorName(e.target.value)}
           />
           <input
             placeholder='Description'
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={bookDescription}
+            onChange={(e) => setBookDescription(e.target.value)}
           />
           <input
             placeholder='Publisher'
