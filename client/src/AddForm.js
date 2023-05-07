@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 
-function AddForm({book, author, work}) {
+function AddForm({book, author, descriptionArray}) {
     const {title, subtitle, publishers, publish_date, physical_format} = book
-    const {description} = work
     const {name} = author
-    
+
     const [bookTitle, setBookTitle] = useState(title)
     const [bookSubtitle, setBookSubtitle] = useState(subtitle)
     const [authorName, setAuthorName] = useState(name)
-    const [bookDescription, setBookDescription] = useState(description)
+    const [bookDescription, setBookDescription] = useState(descriptionArray)
     const [publisher, setPublisher] = useState(publishers)
     const [publishDate, setPublishDate] = useState(publish_date)
     const [physicalFormat, setPhysicalFormat] = useState(physical_format)

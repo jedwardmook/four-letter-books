@@ -5,6 +5,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
   const [book, setBook] = useState('')
   const [author, setAuthor] = useState('')
   const [work, setWork] = useState('')
+  const [descriptionArray, setDescriptionArray] = useState([])
   const [isbnFormDiv, setIsbnFormDiv] = useState(false)
 
   const submitSearch = async (e) => {
@@ -56,11 +57,21 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
     const data = await response.json();
       setWork(data);
       console.log(data);
+      const descriptions = data.description
+      checkObject(descriptions)
       setIsbnFormDiv(true);
     } catch (error) {
         console.log(error);
     }
   }
+
+  function checkObject(arr){
+    if (arr instanceof Object){
+        setDescriptionArray(arr.value)
+    }else {
+        setDescriptionArray(arr)
+    }
+}
 
   function showAddForm(){
     setIsbnFormDiv(!isbnFormDiv)
@@ -125,6 +136,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
           book={book}
           author={author}
           work={work}
+          descriptionArray={descriptionArray}
           />
       </div>}
     </div>
