@@ -8,6 +8,8 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
   const [descriptionArray, setDescriptionArray] = useState([])
   const [isbnFormDiv, setIsbnFormDiv] = useState(false)
 
+
+  //Isbn fetch function
   const submitSearch = async (e) => {
     e.preventDefault()
     try {
@@ -22,7 +24,8 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
       }
     };
 
-  const splitAuthor= (book) => {
+  //extracts author value for fetch
+  const splitAuthor = (book) => {
     if (book.authors){
       const author = Object.values(book.authors[0])
       fetchAuthor(author)}
@@ -31,6 +34,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
     }
   }
   
+  //extracts work value for fetch
   function splitWork(book){
     if (book.works){
       const work = Object.values(book.works[0])
@@ -40,6 +44,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
     }
   }
   
+  //Author fetch sets Author in state
   const fetchAuthor = async (author) => {
     try {
     const response = await fetch(`http://openlibrary.org${author}.json`);
@@ -51,6 +56,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
       }
   }
 
+  //Work fetch set description in state using checkObject helper function
   const fetchWork = async (work) => {
     try {
     const response = await fetch(`http://openlibrary.org${work}.json`);
@@ -65,6 +71,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
     }
   }
 
+  //checks to see if data.description from fetchWork is an object
   function checkObject(arr){
     if (arr instanceof Object){
         setDescriptionArray(arr.value)
@@ -73,6 +80,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
     }
 }
 
+  //makes addForm visible
   function showAddForm(){
     setIsbnFormDiv(!isbnFormDiv)
   }
@@ -90,48 +98,6 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
       <button onClick={showAddForm}>Add Book Manually</button>
       {isbnFormDiv&&
       <div>
-        {/* <form>
-          <input
-            placeholder='Title'
-            value={book? book.title: title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <input
-            placeholder='Subtitle'
-            value={book? book.subtitle: subtitle}
-            onChange={(e) => setSubtitle(e.target.value)}
-          />
-          <input
-            placeholder='Author'
-            value={author? author.name: authorName}
-            onChange={(e) => setAuthorName(e.target.value)}
-          />
-          <input
-            placeholder='Description'
-            value={work? work.description: description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <input
-            placeholder='Publisher'
-            value={book? book.publishers: publisher}
-            onChange={(e) => setPublisher(e.target.value)}
-          />
-          <input
-            placeholder='Published Date'
-            value={book? book.publish_date: publishDate}
-            onChange={(e) => setPublishDate(e.target.value)}
-          />
-          <input
-            placeholder='Format'
-            value={book? book.physical_format: physicalFormat}
-            onChange={(e) => setPhysicalFormat(e.target.value)}
-          />
-          <input
-            placeholder='Price'
-            value={book? book.price: price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </form> */}
         <AddForm 
           book={book}
           author={author}
