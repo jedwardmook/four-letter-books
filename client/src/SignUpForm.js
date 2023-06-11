@@ -5,6 +5,36 @@ function SignUpForm() {
   const [password, setPassword] = useState('')
   const [passwordConfrimation, setPasswordConfirmation] = useState('')
 
+  const handleSignUp = (e) => {
+    e.preventDefault()
+
+    fetch('/users', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username: username,
+          password: password,
+          password_confirmation: passwordConfrimation,
+        }
+      })
+    })
+    .then((response) => {
+      if (response.ok) {
+        response.json().then((user) =>{
+          console.log(user);
+        })
+      } else {
+        response.json().then(errors => console.log(errors))
+      }
+    })
+    setUsername('');
+    setPassword('');
+    setPasswordConfirmation('');
+  }
+
   const handleUsername = (e) => {
     setUsername(e.target.value)
   }
@@ -38,6 +68,7 @@ function SignUpForm() {
               value={passwordConfrimation}
               onChange={handlePasswordConfirmation}
               />
+          <button onClick={handleSignUp}>Sign Up</button>
         </form>
     </>
   )
