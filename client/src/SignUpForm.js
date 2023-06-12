@@ -35,38 +35,29 @@ function SignUpForm() {
     setPasswordConfirmation('');
   }
 
-  const handleUsername = (e) => {
-    setUsername(e.target.value)
-  }
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value)
-  }
-
-  const handlePasswordConfirmation = (e) => {
-    setPasswordConfirmation(e.target.value)
-  }
-
   return (
     <>
         <form>
           <label htmlFor='username'>Username</label>
             <input 
               id='username'
+              type='text'
               value={username}
-              onChange={handleUsername}
+              onChange={(e) => setUsername(e.target.value)}
               />
           <label htmlFor='password'>Password</label>
             <input 
               id='password'
+              type='password'
               value={password}
-              onChange={handlePassword}
+              onChange={(e) => setPassword(e.target.value)}
               />
           <label htmlFor='passwordConfirmation'>Password Confirmation</label>
             <input 
               id='passwordConfirmation'
+              type='password'
               value={passwordConfrimation}
-              onChange={handlePasswordConfirmation}
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
               />
           <button onClick={handleSignUp}>Sign Up</button>
         </form>
