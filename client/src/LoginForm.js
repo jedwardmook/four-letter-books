@@ -4,22 +4,52 @@ function LoginForm() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    fetch('/sessions', {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          console.log(user)
+        })
+      } else {
+        response.json().then((errors) => {
+          console.log(errors)
+        })
+      }
+    })
+    setUsername('');
+    setPassword('');
+  }
+
+
+
   return (
     <>
         <form>
-            <label htmlFor='username'>Username</label>
+            <label htmlFor='login_username'>Username</label>
             <input
-                id='username'
+                id='login_username'
+                placeholder='Username'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)} 
                 />
-            <label htmlFor='password'>Password</label>
+            <label htmlFor='login_password'>Password</label>
             <input
-                id='password'
+                id='login_password'
+                placeholder='Password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} 
                 />
-            <button>Log In</button>
+            <button onClick={handleLogin}>Log In</button>
         </form>
     </>
   )
