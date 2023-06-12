@@ -38,24 +38,27 @@ function SignUpForm() {
   return (
     <>
         <form>
-          <label htmlFor='username'>Username</label>
+          <label htmlFor='signupUsername'>Username</label>
             <input 
-              id='username'
+              id='signupUsername'
               type='text'
+              placeholder='Username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               />
-          <label htmlFor='password'>Password</label>
+          <label htmlFor='signupPassword'>Password</label>
             <input 
-              id='password'
+              id='signupPassword'
               type='password'
+              placeholder='Password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               />
-          <label htmlFor='passwordConfirmation'>Password Confirmation</label>
+          <label htmlFor='signupPasswordConfirmation'>Password Confirmation</label>
             <input 
-              id='passwordConfirmation'
+              id='signupPasswordConfirmation'
               type='password'
+              placeholder='Confirm Password'
               value={passwordConfrimation}
               onChange={(e) => setPasswordConfirmation(e.target.value)}
               />

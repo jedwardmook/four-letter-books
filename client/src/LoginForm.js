@@ -35,16 +35,18 @@ function LoginForm() {
   return (
     <>
         <form>
-            <label htmlFor='login_username'>Username</label>
+            <label htmlFor='loginUsername'>Username</label>
             <input
-                id='login_username'
+                id='loginUsername'
+                type='text'
                 placeholder='Username'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)} 
                 />
-            <label htmlFor='login_password'>Password</label>
+            <label htmlFor='loginPassword'>Password</label>
             <input
-                id='login_password'
+                id='loginPassword'
+                type='password'
                 placeholder='Password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} 
