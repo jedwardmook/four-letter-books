@@ -8,20 +8,26 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
   const [work, setWork] = useState('')
   const [descriptionArray, setDescriptionArray] = useState([])
   const [isbnFormDiv, setIsbnFormDiv] = useState(false)
+  const [returnedError, setReturnedError] = useState()
 
 
   //Isbn fetch function
   const submitSearch = async (e) => {
     e.preventDefault()
-    try {
-    const response = await fetch(`${fetchAddress}${value}.json`);
-    const data = await response.json();
-      setBook(data);
-      console.log(data);
-      splitAuthor(data);
-      splitWork(data);
-    } catch (error) {
-        console.log(error);
+    const valInt = parseInt(value)
+      if (valInt === parseInt(value, 10) && (value.length === 8 || value.length === 13)){
+        try {
+          const response = await fetch(`${fetchAddress}${value}.json`);
+          const data = await response.json();
+          setBook(data);
+          console.log(data);
+          splitAuthor(data);
+          splitWork(data);
+        } catch (error) {
+          setReturnedError(error)
+        }
+      } else {
+        setReturnedError("ISBN must an 8 or 13 digit number.")
       }
     };
 
@@ -98,14 +104,12 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
       </form>
       <button onClick={showAddForm}>Add Book Manually</button>
       {isbnFormDiv&&
-      <div>
         <AddForm 
           book={book}
           author={author}
           work={work}
           descriptionArray={descriptionArray}
-          />
-      </div>}
+          />}
     </div>
   )
 }
