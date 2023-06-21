@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import SearchBook from './SearchBook'
+import Scanner from './Scanner'
 
 function AddBook() {
   const[isbn, setIsbn] = useState('')
@@ -13,6 +14,9 @@ function AddBook() {
           onChange={(e) => setIsbn(e.target.value)}
           fetchAddress="http://openlibrary.org/isbn/"
         />
+        {/* <Scanner 
+          setIsbn={setIsbn}
+          /> */}
     </div>
   )
 }

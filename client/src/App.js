@@ -1,7 +1,6 @@
 import AddBook from './AddBook';
 import './App.css';
 import LoginForm from './LoginForm';
-import Scanner from './Scanner';
 import SignUpForm from './SignUpForm';
 
 function App() {
@@ -11,7 +10,6 @@ function App() {
       <AddBook/>
       <LoginForm />
       <SignUpForm />
-      <Scanner />
     </div>
   );
 }
