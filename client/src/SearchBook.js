@@ -8,6 +8,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
   const [work, setWork] = useState('')
   const [descriptionArray, setDescriptionArray] = useState([])
   const [isbnFormDiv, setIsbnFormDiv] = useState(false)
+  const [language, setLanguage] = useState()
   const [returnedError, setReturnedError] = useState()
 
 
@@ -15,7 +16,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
   const submitSearch = async (e) => {
     e.preventDefault()
     const valInt = parseInt(value)
-      if (valInt === parseInt(value, 10) && (value.length === 8 || value.length === 13)){
+      if (valInt === parseInt(value, 10) && (value.length === 10 || value.length === 13)){
         try {
           const response = await fetch(`${fetchAddress}${value}.json`);
           const data = await response.json();
@@ -23,11 +24,13 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
           console.log(data);
           splitAuthor(data);
           splitWork(data);
+          const splitLanguage = data.languages[0]
+          setLanguage(Object.values(splitLanguage))
         } catch (error) {
           setReturnedError(error)
         }
       } else {
-        setReturnedError("ISBN must an 8 or 13 digit number.")
+        setReturnedError("ISBN must an 10 or 13 digit number.")
       }
     };
 
@@ -82,10 +85,10 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
   function checkObject(arr){
     if (arr instanceof Object){
         setDescriptionArray(arr.value)
-    }else {
+    } else {
         setDescriptionArray(arr)
     }
-}
+  }
 
   //makes addForm visible
   function showAddForm(){
@@ -109,6 +112,7 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
           author={author}
           work={work}
           descriptionArray={descriptionArray}
+          bookLanguage={language}
           />}
     </div>
   )

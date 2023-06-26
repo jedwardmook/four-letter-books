@@ -1,41 +1,57 @@
-import React, { useEffect } from 'react'
-import { Html5QrcodeScanner, Html5QrcodeSupportedFormats, Html5QrcodeScanType} from 'html5-qrcode'
+import React, { useEffect, useState } from 'react'
+import { Html5Qrcode } from 'html5-qrcode'
 
-function Scanner({setIsbn}) {
-
-    const formatsToSupport = [
-        Html5QrcodeSupportedFormats.EAN_13,
-        Html5QrcodeSupportedFormats.EAN_8,
-      ];
+function Scanner() {
+    const [cameraId, setCameraId] = useState()
+    const [scanResult, setScanResult] = useState()
 
     useEffect(() => {
-        const scanner = new Html5QrcodeScanner('reader', {
-            qrbox: {
-                width: 500,
-                height: 350,
+        Html5Qrcode.getCameras().then(devices => {
+        if (devices && devices.length) {
+             setCameraId(devices[0].id)
+          }
+        }).catch(err => {
+          console.log(err)
+        });  
+        
+    }, [])
+
+    const html5QrCode = new Html5Qrcode('reader');
+
+    const startScan = () => {
+        html5QrCode.start(
+            cameraId,
+            {
+                fps: 10,
+                qrbox: 250
             },
-            fps: 5,
-            aspectRatio: 1.333334,
-            formatsToSupport: formatsToSupport,
-            supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
-        })
-    
-        scanner.render(success, error);
-    
-        function success(result){
-            scanner.clear();
-            setIsbn(result)
-        }
-    
-        function error(err){
-            console.warn.apply(err)
+            (decodedResult) => {
+                console.log(decodedResult)},
+            (errorMessage) => {
+                // 
+            })               
+            .catch((err) => {
+                console.log(err)
+            })
         }
 
-    },[]);
+    const stopScan = () => {
+        html5QrCode.stop().then(ignore => {
+            console.log(ignore);
+          }).catch(err => { 
+            console.log(err)
+          });
+    }
+    
+        
+    
+        
 
   return (
     <div>
         <div id='reader'></div>
+        <button onClick={startScan}>Start Scan</button> 
+        <button onClick={stopScan}>Stop Scan</button>
     </div>
   )
 }
