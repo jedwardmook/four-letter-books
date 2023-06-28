@@ -3,6 +3,7 @@ import AddBook from './AddBook';
 import './App.css';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
+import Scanner2 from './Scanner2';
 
 
 function App() {
@@ -14,11 +15,14 @@ function App() {
           <Route exact path='login'
             element= {<LoginForm />}
             />
-          <Route exact path='login'
+          <Route exact path='signup'
             element= {<SignUpForm />}
             /> 
-          <Route exact path='login'
+          <Route exact path='addbook'
             element={<AddBook/>}
+            />
+          <Route exact path='isbn_scanner'
+            element={<Scanner2/>}
             />
         </Routes>
       </div>

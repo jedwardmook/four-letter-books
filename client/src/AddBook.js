@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import SearchBook from './SearchBook'
+import Scanner2 from './Scanner2'
 
 
 function AddBook() {
@@ -14,6 +16,9 @@ function AddBook() {
           onChange={(e) => setIsbn(e.target.value)}
           fetchAddress="http://openlibrary.org/isbn/"
         />
+        <Link to="/isbn_scanner">
+          <button>Use Scanner</button>
+        </Link>
     </div>
   )
 }
