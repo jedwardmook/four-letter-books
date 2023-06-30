@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Html5QrcodeScanner, Html5QrcodeSupportedFormats, Html5QrcodeScanType} from 'html5-qrcode'
+import SearchBook from './SearchBook'
 
-function Scanner2({setIsbn}) {
+function Scanner2() {
+    const [isbn, setIsbn] = useState()
 
     const formatsToSupport = [
         Html5QrcodeSupportedFormats.EAN_13,
@@ -36,6 +38,10 @@ function Scanner2({setIsbn}) {
   return (
     <div>
         <div id='reader'></div>
+        <SearchBook 
+            value={isbn}
+            fetchAddress="http://openlibrary.org/isbn/"
+            />
     </div>
   )
 }

@@ -49,7 +49,7 @@ function Scanner() {
 
   return (
     <div>
-        <div id='reader'></div>
+        <div id='reader' style={width= 300}></div>
         <button onClick={startScan}>Start Scan</button> 
         <button onClick={stopScan}>Stop Scan</button>
     </div>

@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
 
 function AddForm({book, author, descriptionArray, bookLanguage}) {
-    const {title, subtitle, publishers, publish_date, physical_format, isbn_10, isbn_13, number_of_pages, physical_dimensions
-    } = book
+    const {
+      title = "", 
+      subtitle = "", 
+      publishers = "", 
+      publish_date = "", 
+      physical_format = '', 
+      isbn_10 = '', 
+      isbn_13 = '', 
+      number_of_pages = '', 
+      physical_dimensions = ''
+      } = book
     const {name} = author
     console.log(author)
 
     const isbn10Int = parseInt(isbn_10)
     const isbn13Int = parseInt(isbn_13)
-    const splitBookLanguage = (bookLanguage[0].slice(-3))
+    const splitBookLanguage = bookLanguage && (bookLanguage[0].slice(-3))
 
     const [bookTitle, setBookTitle] = useState(title)
     const [bookSubtitle, setBookSubtitle] = useState(subtitle)

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SearchBook from './SearchBook'
-import Scanner2 from './Scanner2'
 
 
 function AddBook() {
