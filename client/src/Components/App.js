@@ -1,12 +1,11 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import AddBook from './AddBook';
-import './App.css';
+import '../Styles/App.css';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import AddForm from './AddForm';
-import AddFormFromISBN from './AddFormFromISBN';
 import SearchBook from './SearchBook';
-import QrReaderContainer from './QrReaderContainer';
+
 
 
 function App() {

@@ -1,0 +1,25 @@
+@import "./Variables.scss";
+
+.add_form_main {
+    @include centeredContent;
+}
+
+.add_form_header {
+    display: flex;
+    margin-bottom: -5px;
+}
+
+.add_form_form {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    max-width: 80%;
+}
+
+.add_form_input {
+    width: 70vw;
+    height: 4vh;
+    margin: 5px;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
