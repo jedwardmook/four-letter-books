@@ -30,9 +30,6 @@ function App() {
           <Route exact path='add_book_form'
             element={<AddForm />}
             />
-          <Route exact path='isbn_reader'
-            element={<QrReaderContainer />}
-            />
         </Routes>
       </div>
     </Router>
