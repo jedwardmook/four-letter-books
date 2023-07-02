@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import AddForm from './AddForm'
+import { Link, useNavigate } from 'react-router-dom'
+import AddFormFromISBN from './AddFormFromISBN'
 
 
 function SearchBook({placeholder, value, onChange, fetchAddress}) {
+  const navigate = useNavigate()
+  const [isbn, setIsbn] = useState('')
   const [book, setBook] = useState('')
   const [author, setAuthor] = useState('')
   const [work, setWork] = useState('')
   const [descriptionArray, setDescriptionArray] = useState([])
-  const [isbnFormDiv, setIsbnFormDiv] = useState(false)
   const [language, setLanguage] = useState()
   const [returnedError, setReturnedError] = useState()
 
@@ -15,10 +17,10 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
   //Isbn fetch function
   const submitSearch = async (e) => {
     e.preventDefault()
-    const valInt = parseInt(value)
-      if (valInt === parseInt(value, 10) && (value.length === 10 || value.length === 13)){
+    const valInt = parseInt(isbn)
+      if (valInt === parseInt(isbn, 10) && (isbn.length === 10 || isbn.length === 13)){
         try {
-          const response = await fetch(`${fetchAddress}${value}.json`);
+          const response = await fetch(`http://openlibrary.org/isbn/${isbn}.json`);
           const data = await response.json();
           setBook(data);
           console.log(data);
@@ -27,10 +29,10 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
           const splitLanguage = data.languages[0]
           setLanguage(Object.values(splitLanguage))
         } catch (error) {
-          setReturnedError(error)
+          console.log("No ISBN found")
         }
       } else {
-        setReturnedError("ISBN must an 10 or 13 digit number.")
+        console.log("ISBN must an 10 or 13 digit number.")
       }
     };
 
@@ -75,7 +77,6 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
       console.log(data);
       const descriptions = data.description
       checkObject(descriptions)
-      setIsbnFormDiv(true);
     } catch (error) {
         console.log(error);
     }
@@ -90,30 +91,27 @@ function SearchBook({placeholder, value, onChange, fetchAddress}) {
     }
   }
 
-  //makes addForm visible
-  function showAddForm(){
-    setIsbnFormDiv(!isbnFormDiv)
-  }
-
   return (
     <div>
       <form onSubmit={submitSearch}>
         <input
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
+        placeholder="ISBN"
+        value={isbn}
+        onChange={(e) => setIsbn(e.target.value)}
         />
         <button>Search</button>
       </form>
-      <button onClick={showAddForm}>Add Book Manually</button>
-      {isbnFormDiv&&
-        <AddForm 
-          book={book}
-          author={author}
-          work={work}
-          descriptionArray={descriptionArray}
-          bookLanguage={language}
-          />}
+      <Link to="/isbn_scanner" >
+            <button>Use Scanner</button>
+      </Link>
+      {book&&
+      <AddFormFromISBN 
+        book={book}
+        author={author}
+        work={work}
+        descriptionArray={descriptionArray}
+        bookLanguage={language}
+      />}
     </div>
   )
 }

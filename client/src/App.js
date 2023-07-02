@@ -3,7 +3,10 @@ import AddBook from './AddBook';
 import './App.css';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
-import Scanner2 from './Scanner2';
+import AddForm from './AddForm';
+import AddFormFromISBN from './AddFormFromISBN';
+import SearchBook from './SearchBook';
+import QrReaderContainer from './QrReaderContainer';
 
 
 function App() {
@@ -18,11 +21,17 @@ function App() {
           <Route exact path='signup'
             element= {<SignUpForm />}
             /> 
-          <Route exact path='addbook'
-            element={<AddBook/>}
+          <Route exact path='add_book'
+            element={<AddBook />}
             />
-          <Route exact path='isbn_scanner'
-            element={<Scanner2/>}
+          <Route exact path='add_book_form_isbn'
+            element={<SearchBook />}
+            />
+          <Route exact path='add_book_form'
+            element={<AddForm />}
+            />
+          <Route exact path='isbn_reader'
+            element={<QrReaderContainer />}
             />
         </Routes>
       </div>
