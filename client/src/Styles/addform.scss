@@ -12,8 +12,8 @@
 .add_form_form {
     display: flex;
     flex-direction: column;
-    justify-items: center;
     max-width: 80%;
+    justify-content: space-evenly;
 }
 
 .add_form_input {
@@ -22,4 +22,12 @@
     margin: 5px;
     border-radius: 3px;
     border: 1px solid gray;
+}
+
+.add_form_submit_button {
+    display: block;
+    width: 30vw;
+    height: 5vh;
+    margin-left: auto;
+    margin-right: auto;
 }

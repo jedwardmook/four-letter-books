@@ -100,6 +100,7 @@ function AddForm() {
             onChange={(e) => setPrice(e.target.value)}
             className='add_form_input'
           />
+          <button className='add_form_submit_button'>Add Book</button>
       </form>
     </main>
   )
