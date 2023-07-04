@@ -5,6 +5,7 @@ import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import AddForm from './AddForm';
 import SearchBook from './SearchBook';
+import AddFormFromISBN from './AddFormFromISBN';
 
 
 
@@ -23,11 +24,14 @@ function App() {
           <Route exact path='add_book'
             element={<AddBook />}
             />
-          <Route exact path='add_book_form_isbn'
+          <Route exact path='add_book_isbn'
             element={<SearchBook />}
             />
           <Route exact path='add_book_form'
             element={<AddForm />}
+            />
+          <Route exact path='add_book_form_isbn'
+            element={<AddFormFromISBN />}
             />
         </Routes>
       </div>

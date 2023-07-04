@@ -8,7 +8,7 @@ function AddBook() {
   //component for adding books
   return (
     <div>
-        <Link to='/add_book_form_isbn'>
+        <Link to='/add_book_isbn'>
          <button>Add book using ISBN</button>
         </Link>  
         <Link to="/add_book_form">
