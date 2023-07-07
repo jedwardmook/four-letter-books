@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../Styles/addform.min.css'
 
 function AddForm() {
+  const navigate = useNavigate()
   const [bookTitle, setBookTitle] = useState('')
   const [bookSubtitle, setBookSubtitle] = useState('')
   const [authorName, setAuthorName] = useState('')
@@ -14,7 +16,13 @@ function AddForm() {
   const [pageNumber, setPageNumber] = useState(null)
   const [measurements, setMeasurements] = useState('')
   const [language, setLanguage] = useState('')
+  const [condition, setCondition] = useState('')
   const [price, setPrice] = useState(null)
+  const [genre, setGenre] = useState('')
+  const [genres, setGenres] = useState([])
+  const [errors, setErrors] = useState([])
+
+  console.log(genres)
 
   const handleSubmitBook = (e) => {
     e.preventDefault();
@@ -32,12 +40,27 @@ function AddForm() {
     formData.append('book[measurements]', measurements)
     formData.append('book[language]', language)
     formData.append('book[price]', price)
+    formData.append('book[condition]', condition)
 
     for (const value of formData.values()){
       console.log(value)
     }
+
+    fetch('/books', {
+      method: "POST",
+      body: formData
+    }).then((response) => {
+        if (response.ok) {
+          response.json().then((book) => {
+            console.log("Book added")
+            navigate('/add_book');
+          })
+        } else {
+          response.json().then((errors) => setErrors(errors.errors))
+        }
+    })
   }
-  
+
   return (
     <main className='add_form_main'>
       <div className='add_form_header'>
@@ -120,6 +143,23 @@ function AddForm() {
             onChange={(e) => setLanguage(e.target.value)}
             className='add_form_input'
           />
+          <input
+            placeholder='Condition'
+            value={condition}
+            onChange={(e) => setCondition(e.target.value)}
+            className='add_form_input'
+          />
+          <div>
+            {genres.map(genre => (
+              <p>-{genre}</p>
+            ))}
+          </div>
+          <input
+            placeholder='Genres'
+            value={genre}
+            onChange={(e) => setGenre(e.target.value)}
+            className='add_form_input'
+          /><button type='button' onClick={ () => setGenres([...genres, genre])}>Add Genre</button>
           <input
             placeholder='Price'
             type='number'
