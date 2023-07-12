@@ -18,11 +18,10 @@ function AddForm() {
   const [language, setLanguage] = useState('')
   const [condition, setCondition] = useState('')
   const [price, setPrice] = useState(null)
-  const [genre, setGenre] = useState('')
-  const [genres, setGenres] = useState([])
+  const [genre1, setGenre1] = useState('')
+  const [genre2, setGenre2] = useState('')
+  const [genre3, setGenre3] = useState('')
   const [errors, setErrors] = useState([])
-
-  console.log(genres)
 
   const handleSubmitBook = (e) => {
     e.preventDefault();
@@ -41,10 +40,9 @@ function AddForm() {
     formData.append('book[language]', language)
     formData.append('book[price]', price)
     formData.append('book[condition]', condition)
-
-    for (const value of formData.values()){
-      console.log(value)
-    }
+    formData.append('book[genre1]', genre1)
+    formData.append('book[genre2]', genre2)
+    formData.append('book[genre3]', genre3)
 
     fetch('/books', {
       method: "POST",
@@ -56,7 +54,7 @@ function AddForm() {
             navigate('/add_book');
           })
         } else {
-          response.json().then((errors) => setErrors(errors.errors))
+          response.json().then((errors) => console.log(errors.errors))
         }
     })
   }
@@ -149,17 +147,24 @@ function AddForm() {
             onChange={(e) => setCondition(e.target.value)}
             className='add_form_input'
           />
-          <div>
-            {genres.map(genre => (
-              <p>-{genre}</p>
-            ))}
-          </div>
           <input
-            placeholder='Genres'
-            value={genre}
-            onChange={(e) => setGenre(e.target.value)}
+            placeholder='Genre'
+            value={genre1}
+            onChange={(e) => setGenre1(e.target.value)}
             className='add_form_input'
-          /><button type='button' onClick={ () => setGenres([...genres, genre])}>Add Genre</button>
+          />
+          <input
+            placeholder='Genre'
+            value={genre2}
+            onChange={(e) => setGenre2(e.target.value)}
+            className='add_form_input'
+          />
+          <input
+            placeholder='Genre'
+            value={genre3}
+            onChange={(e) => setGenre3(e.target.value)}
+            className='add_form_input'
+          />
           <input
             placeholder='Price'
             type='number'
