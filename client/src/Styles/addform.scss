@@ -2,12 +2,14 @@
 
 .add_form_main {
     @include centeredContent;
+    background-color: rgb(171, 112, 112);
 }
 
 .add_form_header {
     display: flex;
     margin-top: 50px;
     margin-bottom: -5px;
+    color: azure;
 }
 
 .add_form_form {

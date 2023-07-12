@@ -61,9 +61,9 @@ function AddForm() {
 
   return (
     <main className='add_form_main'>
-      <div className='add_form_header'>
+      <header className='add_form_header'>
         <h2>Add Book</h2>
-      </div>
+      </header>
       <form className='add_form_form' onSubmit={handleSubmitBook}>
           <input
             placeholder='Title'

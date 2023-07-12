@@ -107,7 +107,7 @@ function checkObject(arr){
       {isScanner &&
         <QrReaderContainer 
           fps={10}
-          qrbox={250}
+          qrbox={350}
           disableFlip={false}
           qrCodeSuccessCallback ={onNewScanResult}
         />}
