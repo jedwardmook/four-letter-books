@@ -1,0 +1,27 @@
+@import "./Variables.scss";
+
+.add_book_main {
+    @include centeredContent;
+    background-color: bisque;
+}
+
+.add_book_article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 200px;
+    width: 300px;
+    max-width: 300px;
+    background-color: aqua;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: default;
+}
+
+.add_book_link {
+    @include reactLink
+}
+
+.add_book_button {
+    @include buttonSmall
+}

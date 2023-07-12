@@ -1,3 +1,4 @@
+import '../Styles/addbook.min.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -7,14 +8,16 @@ function AddBook() {
     
   //component for adding books
   return (
-    <div>
-        <Link to="/add_book_form">
-          <button>Add Book Manually</button>
+    <main className='add_book_main'>
+      <article className='add_book_article'>
+        <Link className='add_book_link' to="/add_book_form">
+          <button className='add_book_button'>Add Book Manually</button>
         </Link>
-        <Link to='/add_book_isbn'>
-         <button>Add Book Using ISBN</button>
-        </Link>  
-    </div>
+        <Link className='add_book_link' to='/add_book_isbn'>
+         <button className='add_book_button'>Add Book with ISBN</button>
+        </Link> 
+      </article> 
+    </main>
   )
 }
 
