@@ -19,9 +19,10 @@
 }
 
 .add_book_link {
-    @include reactLink
+    @include reactLink;
 }
 
 .add_book_button {
-    @include buttonSmall
+    @include buttonSmall;
+    background-color: bisque;
 }
