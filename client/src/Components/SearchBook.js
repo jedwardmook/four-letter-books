@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "../Styles/searchbook.min.css"
 import AddFormFromISBN from './AddFormFromISBN'
 import QrReaderContainer from './QrReaderContainer'
 import ISBNSearchInput from './ISBNSearchInput'
@@ -29,10 +30,10 @@ function SearchBook() {
           const splitLanguage = data.languages[0]
           setLanguage(Object.values(splitLanguage))
         } catch (error) {
-          console.log("No ISBN found")
+          setReturnedError("No ISBN found")
         }
       } else {
-        console.log("ISBN must an 10 or 13 digit number.")
+        setReturnedError("ISBN must an 10 or 13 digit number.")
         }
     };
 
@@ -93,24 +94,24 @@ function checkObject(arr){
 
   const onNewScanResult = (decodedText, decodedResult) => {
     console.log("App [result]", decodedResult);
-    console.log("Text", decodedText)
+    setIsbn(decodedText)
+    setIsScanner(!isScanner)
 };
 
   return (
     <div>
+    <main className='search_book_main'>
+      <header className='search_book_header'>
+        <h3>Search ISBN</h3>
+      </header>
       <ISBNSearchInput 
         isbn = {isbn}
         setIsbn = {setIsbn}
         submitSearch={submitSearch}
-        />
-      <button onClick={() => setIsScanner(!isScanner)}>{isScanner? "Hide Scanner" : "Use Scanner" }</button>
-      {isScanner &&
-        <QrReaderContainer 
-          fps={10}
-          qrbox={350}
-          disableFlip={false}
-          qrCodeSuccessCallback ={onNewScanResult}
-        />}
+      />
+      <div className='search_book_button_div'>
+        <button className='search_book_scanner' onClick={() => setIsScanner(!isScanner)}>{isScanner? "Hide Scanner" : "Use Scanner" }</button>
+      </div>
       {book&&
       <AddFormFromISBN 
         book={book}
@@ -119,6 +120,21 @@ function checkObject(arr){
         descriptionArray={descriptionArray}
         bookLanguage={language}
       />}
+      {returnedError&&
+        <div className='search_book_error_div'>
+          <div className='search_book_error_area'>
+            <p>{returnedError}</p>
+            <button className="search_book_error_button" onClick={() => setReturnedError("")}>Okay</button>
+          </div>
+        </div>}
+    </main>
+         {isScanner &&
+          <QrReaderContainer 
+            fps={10}
+            qrbox={350}
+            disableFlip={false}
+            qrCodeSuccessCallback ={onNewScanResult}
+          />}
     </div>
   )
 }
