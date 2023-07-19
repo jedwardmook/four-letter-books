@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../Styles/addform.min.css'
 
-function AddFormFromISBN({book, author, descriptionArray, bookLanguage}) {
+function AddFormFromISBN({book, author, descriptionArray, bookLanguage, work}) {
   const {
     title = "", 
     subtitle = "", 
@@ -14,6 +14,8 @@ function AddFormFromISBN({book, author, descriptionArray, bookLanguage}) {
     physical_dimensions = ''
     } = book
   const {name} = author
+  const {subjects} = work
+  
 
   const isbn10Int = parseInt(isbn_10)
   const isbn13Int = parseInt(isbn_13)
@@ -33,9 +35,9 @@ function AddFormFromISBN({book, author, descriptionArray, bookLanguage}) {
   const [language, setLanguage] = useState(splitBookLanguage)
   const [condition, setCondition] = useState('')
   const [price, setPrice] = useState()
-  const [genre1, setGenre1] = useState('')
-  const [genre2, setGenre2] = useState('')
-  const [genre3, setGenre3] = useState('')
+  const [genre1, setGenre1] = useState(subjects[0])
+  const [genre2, setGenre2] = useState(subjects[1])
+  const [genre3, setGenre3] = useState(subjects[2])
   const [errors, setErrors] = useState([])
   
   return (

@@ -9,6 +9,7 @@ function ISBNSearchInput({isbn, setIsbn, submitSearch}){
     <form onSubmit={submitSearch}>
         <input
           className="isbn_search_input"
+          type="number"
           placeholder="ISBN"
           value={isbn}
           onChange={(e) => setIsbn(e.target.value)}

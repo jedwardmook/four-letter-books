@@ -10,7 +10,7 @@ function SearchBook() {
   const [book, setBook] = useState('')
   const [author, setAuthor] = useState('')
   const [work, setWork] = useState('')
-  const [descriptionArray, setDescriptionArray] = useState([])
+  const [descriptionArray, setDescriptionArray] = useState('')
   const [language, setLanguage] = useState()
   const [returnedError, setReturnedError] = useState()
 
@@ -41,8 +41,8 @@ function SearchBook() {
 const splitAuthor = (book) => {
   if (book.authors){
     const author = Object.values(book.authors[0])
-    fetchAuthor(author)}
-  else {
+    fetchAuthor(author)
+  } else {
     console.log("No books.authors")
   }
 }
@@ -112,7 +112,7 @@ function checkObject(arr){
       <div className='search_book_button_div'>
         <button className='search_book_scanner' onClick={() => setIsScanner(!isScanner)}>{isScanner? "Hide Scanner" : "Use Scanner" }</button>
       </div>
-      {book&&
+      {work&&
       <AddFormFromISBN 
         book={book}
         author={author}
