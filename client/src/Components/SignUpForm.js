@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "../Styles/signup.min.css"
 
 function SignUpForm() {
   const [username, setUsername] = useState('')
@@ -36,35 +37,40 @@ function SignUpForm() {
   }
 
   return (
-    <>
-        <form>
-          <label htmlFor='signupUsername'>Username</label>
-            <input 
+    <main className='sign_up_main'>
+      <article className='sign_up_form_container'>
+        <form className='sign_up_form'>
+          <label className='sign_up_label' htmlFor='signupUsername'>Username</label>
+            <input
               id='signupUsername'
+              className='sign_up_input'
               type='text'
               placeholder='Username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               />
-          <label htmlFor='signupPassword'>Password</label>
+          <label className='sign_up_label' htmlFor='signupPassword'>Password</label>
             <input 
               id='signupPassword'
+              className='sign_up_input'
               type='password'
               placeholder='Password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               />
-          <label htmlFor='signupPasswordConfirmation'>Password Confirmation</label>
+          <label className='sign_up_label' htmlFor='signupPasswordConfirmation'>Password Confirmation</label>
             <input 
               id='signupPasswordConfirmation'
+              className='sign_up_input'
               type='password'
               placeholder='Confirm Password'
               value={passwordConfrimation}
               onChange={(e) => setPasswordConfirmation(e.target.value)}
               />
-          <button onClick={handleSignUp}>Sign Up</button>
+          <button className='sign_up_button' onClick={handleSignUp}>Sign Up</button>
         </form>
-    </>
+      </article>
+    </main>
   )
 }
 

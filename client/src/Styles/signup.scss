@@ -1,0 +1,44 @@
+@import "./Variables.scss";
+
+.sign_up_main {
+    @include centeredContent;
+}
+
+.sign_up_form_container {
+    background-color: antiquewhite;
+    display: flex;
+    border: none;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+}
+
+.sign_up_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    height: 300px;
+}
+
+.sign_up_label {
+    font-family: $typewriter;
+    font-size: 18px;
+}
+
+.sign_up_input {
+    width: 215px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    text-align: center;
+}
+
+.sign_up_button {
+    @include buttonSmall;
+    height: 40px;
+    width: 100px;
+}
