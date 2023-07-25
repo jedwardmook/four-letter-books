@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import "../Styles/signup.min.css"
+import blue from "../Styles/Images/blue.svg" 
 
 function SignUpForm() {
   const [username, setUsername] = useState('')
@@ -39,6 +41,8 @@ function SignUpForm() {
   return (
     <main className='sign_up_main'>
       <article className='sign_up_form_container'>
+        <img src={blue} alt="blue alien cat" className='sign_up_form_image'/>
+        <h2 className='sign_up_header'>Sign up for account</h2>
         <form className='sign_up_form'>
           <label className='sign_up_label' htmlFor='signupUsername'>Username</label>
             <input
@@ -69,6 +73,12 @@ function SignUpForm() {
               />
           <button className='sign_up_button' onClick={handleSignUp}>Sign Up</button>
         </form>
+        <div className='sign_up_log_in_div'>
+          <p>Login to your account</p>
+          <Link className='sign_up_log_in_link' to='/login'>
+            <button className='sign_up_log_in_button'>here</button>
+          </Link>
+        </div>
       </article>
     </main>
   )

@@ -1,10 +1,10 @@
-@import "./Variables.scss";
+@import './Variables.scss';
 
-.sign_up_main {
-    @include centeredContent;
+.log_in_main {
+    @include centeredContent
 }
 
-.sign_up_form_container {
+.log_in_container {
     background-color: antiquewhite;
     display: flex;
     flex-direction: column;
@@ -16,30 +16,30 @@
     align-items: center;
 }
 
-.sign_up_header {
+.log_in_header {
     font-family: $archivo;
     margin-top: -20px;
 }
 
-.sign_up_form_image {
+.log_in_form_image {
     width: 225px;
-    margin-top: -12px;
-
+    margin-top: -13px;
 }
 
-.sign_up_form {
+.log_in_form {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 300px;
 }
 
-.sign_up_label {
+.log_in_label {
     font-family: $typewriter;
     font-size: 18px;
+    margin-top: 5px;
 }
 
-.sign_up_input {
+.log_in_input {
     width: 215px;
     height: 30px;
     margin: 5px;
@@ -48,32 +48,32 @@
     text-align: center;
 }
 
-.sign_up_button {
+.log_in_button {
     @include buttonSmall;
-    background-color: #17488e;
+    background-color: #d98fbd;
     color: white;
     font-family: $archivo;
     font-weight: 600;
     height: 40px;
     width: 100px;
     border: none;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
-.sign_up_log_in_div {
+.log_in_sign_up_div {
     display: flex;
     font-family: $archivo;
     font-size: 14px;
 }
 
-.sign_up_log_in_link {
+.log_in_sign_up_link {
     margin-top: 13px;
 }
 
-.sign_up_log_in_button {
+.log_in_sign_up_button {
     border: none;
     background-color: antiquewhite;
-    color: #d98fbd;
+    color: #17488e;
     font-size: 14px;
     font-weight: 600;
     text-decoration: underline;
