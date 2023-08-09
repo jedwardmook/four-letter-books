@@ -6,6 +6,7 @@ import SignUpForm from './SignUpForm';
 import AddForm from './AddForm';
 import SearchBook from './SearchBook';
 import AddFormFromISBN from './AddFormFromISBN';
+import BooksMain from './BooksMain';
 
 
 
@@ -32,6 +33,9 @@ function App() {
             />
           <Route exact path='add_book_form_isbn'
             element={<AddFormFromISBN />}
+            />
+          <Route exact path='books_main'
+            element={<BooksMain />}
             />
         </Routes>
       </div>
