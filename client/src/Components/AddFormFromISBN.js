@@ -39,6 +39,7 @@ function AddFormFromISBN({book, author, descriptionArray, bookLanguage, work}) {
   const [genre1, setGenre1] = useState(subjects[0])
   const [genre2, setGenre2] = useState(subjects[1])
   const [genre3, setGenre3] = useState(subjects[2])
+  const [quantity, setQuantity] = useState(1)
   const [errors, setErrors] = useState([])
 
   const handleSubmitBook = (e) => {
@@ -61,6 +62,7 @@ function AddFormFromISBN({book, author, descriptionArray, bookLanguage, work}) {
     formData.append('book[genre1]', genre1)
     formData.append('book[genre2]', genre2)
     formData.append('book[genre3]', genre3)
+    formData.append('book[quantity]', quantity)
 
     fetch('/books', {
       method: "POST",
@@ -187,6 +189,14 @@ function AddFormFromISBN({book, author, descriptionArray, bookLanguage, work}) {
             placeholder='Price'
             value={price}
             onChange={(e) => setPrice(e.target.value)}
+            className='add_form_input'
+          />
+          <input
+            placeholder='Quantity'
+            type='number'
+            min='1'
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
             className='add_form_input'
           />
           <button className='add_form_submit_button'>Add Book</button>

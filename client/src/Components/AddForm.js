@@ -21,6 +21,7 @@ function AddForm() {
   const [genre1, setGenre1] = useState('')
   const [genre2, setGenre2] = useState('')
   const [genre3, setGenre3] = useState('')
+  const [quantity, setQuantity] = useState(1)
   const [errors, setErrors] = useState([])
 
   const handleSubmitBook = (e) => {
@@ -43,6 +44,7 @@ function AddForm() {
     formData.append('book[genre1]', genre1)
     formData.append('book[genre2]', genre2)
     formData.append('book[genre3]', genre3)
+    formData.append('book[quantity]', quantity)
 
     fetch('/books', {
       method: "POST",
@@ -170,6 +172,14 @@ function AddForm() {
             type='number'
             value={price}
             onChange={(e) => setPrice(e.target.value)}
+            className='add_form_input'
+          />
+          <input
+            placeholder='Quantity'
+            type='number'
+            min='1'
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
             className='add_form_input'
           />
           <button className='add_form_submit_button'>Add Book</button>
