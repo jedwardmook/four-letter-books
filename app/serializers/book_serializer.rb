@@ -1,3 +1,20 @@
 class BookSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, 
+             :title, 
+             :subtitle, 
+             :author, 
+             :description, 
+             :publisher,
+             :year_published,
+             :cover_type, 
+             :isbn_10, 
+             :isbn_13,
+             :page_number, 
+             :measurements,
+             :language, 
+             :condition, 
+             :price, 
+             :genre1,
+             :genre2,
+             :genre3
 end

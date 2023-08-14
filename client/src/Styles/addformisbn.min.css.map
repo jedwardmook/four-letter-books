@@ -1,1 +1,1 @@
-{"version":3,"sources":["addformisbn.scss","Variables.scss"],"names":[],"mappings":"AAEA,oBAAA,cAAA,CCCI,WAAA,CACA,UAAA,CACA,KAAA,CACA,MAAA,CACA,YAAA,CACA,qBAAA,CACA,sBAAA,CACA,kBAAA,CACA,iBAAA,CACA,iBAAA","file":"addformisbn.min.css"}
+{"version":3,"sources":["Variables.scss","addformisbn.scss"],"names":[],"mappings":"AAAQ,wIAAA,CCER,oBDII,cAAA,CACA,WAAA,CACA,UAAA,CACA,KAAA,CACA,MAAA,CACA,YAAA,CACA,qBAAA,CACA,sBAAA,CACA,kBAAA,CACA,iBAAA,CACA,iBAAA","file":"addformisbn.min.css"}

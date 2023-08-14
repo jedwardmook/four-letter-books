@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../Styles/addform.min.css'
 
 function AddFormFromISBN({book, author, descriptionArray, bookLanguage, work}) {
@@ -16,11 +17,11 @@ function AddFormFromISBN({book, author, descriptionArray, bookLanguage, work}) {
   const {name} = author
   const {subjects} = work
   
-
   const isbn10Int = parseInt(isbn_10)
   const isbn13Int = parseInt(isbn_13)
   const splitBookLanguage = bookLanguage && (bookLanguage[0].slice(-3))
 
+  const navigate = useNavigate()
   const [bookTitle, setBookTitle] = useState(title)
   const [bookSubtitle, setBookSubtitle] = useState(subtitle)
   const [authorName, setAuthorName] = useState(name)
@@ -39,13 +40,49 @@ function AddFormFromISBN({book, author, descriptionArray, bookLanguage, work}) {
   const [genre2, setGenre2] = useState(subjects[1])
   const [genre3, setGenre3] = useState(subjects[2])
   const [errors, setErrors] = useState([])
+
+  const handleSubmitBook = (e) => {
+    e.preventDefault();
+    const formData = new FormData()
+    formData.append('book[title]', bookTitle)
+    formData.append('book[subtitle]', bookSubtitle)
+    formData.append('book[author]', authorName)
+    formData.append('book[description]', bookDescription)
+    formData.append('book[publisher]', publisher)
+    formData.append('book[year_published]', publishDate)
+    formData.append('book[cover_type]', physicalFormat)
+    formData.append('book[isbn_10]', isbn10)
+    formData.append('book[isbn_13]', isbn13)
+    formData.append('book[page_number]', pageNumber)
+    formData.append('book[measurements]', measurements)
+    formData.append('book[language]', language)
+    formData.append('book[price]', price)
+    formData.append('book[condition]', condition)
+    formData.append('book[genre1]', genre1)
+    formData.append('book[genre2]', genre2)
+    formData.append('book[genre3]', genre3)
+
+    fetch('/books', {
+      method: "POST",
+      body: formData
+    }).then((response) => {
+        if (response.ok) {
+          response.json().then((book) => {
+            console.log("Book added")
+            navigate('/add_book');
+          })
+        } else {
+          response.json().then((errors) => console.log(errors.errors))
+        }
+    })
+  }
   
   return (
     <main className='add_form_main'>
       <header className='add_form_header'>
         <h2>Add Book</h2>
       </header>
-      <form className='add_form_form'>
+      <form className='add_form_form' onSubmit={handleSubmitBook}>
           <input
             placeholder='Title'
             value={bookTitle}
