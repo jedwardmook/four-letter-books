@@ -7,6 +7,7 @@ import AddForm from './AddForm';
 import SearchBook from './SearchBook';
 import AddFormFromISBN from './AddFormFromISBN';
 import BooksMain from './BooksMain';
+import NavBar from './NavBar';
 
 
 
@@ -15,26 +16,27 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <NavBar/>
         <Routes>
-          <Route exact path='login'
+          <Route path='login'
             element= {<LoginForm />}
             />
-          <Route exact path='signup'
+          <Route path='signup'
             element= {<SignUpForm />}
             /> 
-          <Route exact path='add_book'
+          <Route path='add_book'
             element={<AddBook />}
             />
-          <Route exact path='add_book_isbn'
+          <Route path='add_book_isbn'
             element={<SearchBook />}
             />
-          <Route exact path='add_book_form'
+          <Route path='add_book_form'
             element={<AddForm />}
             />
-          <Route exact path='add_book_form_isbn'
+          <Route path='add_book_form_isbn'
             element={<AddFormFromISBN />}
             />
-          <Route exact path='books_main'
+          <Route exact path='/'
             element={<BooksMain />}
             />
         </Routes>
