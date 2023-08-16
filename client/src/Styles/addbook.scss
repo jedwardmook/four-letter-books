@@ -2,7 +2,6 @@
 
 .add_book_main {
     @include centeredContent;
-    background-color: bisque;
 }
 
 .add_book_article {
@@ -24,5 +23,6 @@
 
 .add_book_button {
     @include buttonSmall;
+    height: 40px;
     background-color: bisque;
 }

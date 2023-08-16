@@ -22,3 +22,37 @@
     text-align: center;
     font-size: 16px;
 }
+
+.books_main_data {
+    border-bottom: .5px solid black;
+}
+
+.books_main_data:nth-child(even) {
+    background-color: aliceblue;
+}
+
+.books_main_data:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 0, 0.172);
+}
+
+.books_main_controls_div {
+    display: flex;
+    margin-top: 10px;
+}
+
+.books_main_controls_button {
+    background-color: #009879;
+    color:#ffffff;
+    border: none;
+    border-radius: 3px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.books_main_controls_display {
+    font-family: $archivo;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 2px;
+}
