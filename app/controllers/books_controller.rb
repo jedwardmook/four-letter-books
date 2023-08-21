@@ -14,6 +14,16 @@ class BooksController < ApplicationController
         end
     end
 
+    def update
+        book = Book.find_by(id: params[:id])
+        if book
+            book.update( book_params)
+            render json: book, status: :accepted
+        else
+            render json: { error: "Book not found"}, status: :not_found
+        end
+    end
+
     def create
         book = Book.create!(book_params)
         render json: book, status: :created
