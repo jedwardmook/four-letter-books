@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import AddBook from './AddBook';
 import '../Styles/App.css';
+import AddBook from './AddBook';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import AddForm from './AddForm';
@@ -8,6 +8,7 @@ import SearchBook from './SearchBook';
 import AddFormFromISBN from './AddFormFromISBN';
 import BooksMain from './BooksMain';
 import NavBar from './NavBar';
+import BookPage from './BookPage';
 
 
 
@@ -38,6 +39,9 @@ function App() {
             />
           <Route exact path='/'
             element={<BooksMain />}
+            />
+          <Route exact path='/books/:bookId'
+            element={<BookPage />}
             />
         </Routes>
       </div>

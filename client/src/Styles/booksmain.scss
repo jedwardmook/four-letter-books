@@ -23,6 +23,10 @@
     font-size: 16px;
 }
 
+.books_main_link {
+    text-decoration: none;
+}
+
 .books_main_data {
     border-bottom: .5px solid black;
 }
@@ -32,7 +36,6 @@
 }
 
 .books_main_data:hover {
-    cursor: pointer;
     background-color: rgba(255, 255, 0, 0.172);
 }
 
