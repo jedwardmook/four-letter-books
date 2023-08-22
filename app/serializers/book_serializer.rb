@@ -16,5 +16,6 @@ class BookSerializer < ActiveModel::Serializer
              :price, 
              :genre1,
              :genre2,
-             :genre3
+             :genre3,
+             :quantity
 end

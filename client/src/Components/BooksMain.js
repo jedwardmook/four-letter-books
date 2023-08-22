@@ -31,6 +31,7 @@ function BooksMain() {
             <td>{book.page_number}</td>
             <td>{book.condition}</td>
             <td>{book.price}</td>
+            <td>{book.quantity}</td>
             <Link to={`/books/${book.id}`}><button className="books_main_controls_button">view/edit</button></Link>
           </tr>
     })
@@ -57,6 +58,7 @@ function BooksMain() {
               <th>Page Number</th>
               <th>Condition</th>
               <th>Price</th>
+              <th>In Stock</th>
               <th></th>
             </tr>
           </thead>
