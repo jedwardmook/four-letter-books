@@ -26,8 +26,8 @@ function BooksMain() {
     return <tr className="books_main_data" key={index}>
             <td>{book.title}</td>
             <td>{book.author}</td>              
-            <td>{book.isbn_10}</td>
-            <td>{book.isbn_13}</td>
+            <td>{book.isbn_10 === 0? "N/A": book.isbn_10}</td>
+            <td>{book.isbn_13 === 0 ? "N/A" : book.isbn_13}</td>
             <td>{book.page_number}</td>
             <td>{book.condition}</td>
             <td>{book.price}</td>

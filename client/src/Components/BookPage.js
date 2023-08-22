@@ -61,11 +61,11 @@ function BookPage() {
       </tr>
       <tr>
         <td>ISBN 10:</td>
-        <td>{book.isbn_10}</td>             
+        <td>{book.isbn_10 === 0? "N/A" : book.isbn_10}</td>             
       </tr>
       <tr>
         <td>ISBN 13:</td>
-        <td>{book.isbn_13}</td>
+        <td>{book.isbn_13 === 0? "N/A" : book.isbn_13}</td>
       </tr>
       <tr>
         <td>Pages:</td>
@@ -85,7 +85,7 @@ function BookPage() {
       </tr>
       <tr>
         <td>Price:</td>
-        <td>${book.price}</td>
+        <td>{book.price === 0? "Not priced yet": `$${book.price}`}</td>
       </tr>
       <tr>
         <td>Genre:</td>
@@ -109,6 +109,8 @@ function BookPage() {
       <EditBookPage
         book = {book}
         setBook = {setBook}
+        setEditBook = {setEditBook}
+        editBook = {editBook}
         />}
     </main>:<><h1>Loading</h1></>
    

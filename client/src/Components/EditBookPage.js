@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function EditBookPage({book, setBook}) {
+function EditBookPage({book, setBook, setEditBook, editBook}) {
   const {title, subtitle, author, description, publisher, year_published, cover_type, isbn_10,
     isbn_13, page_number, measurements, language, condition, price, genre1, genre2, genre3, quantity } = book
   const [editTitle, setEditTitle] = useState(title)
@@ -52,7 +52,7 @@ function EditBookPage({book, setBook}) {
       if (response.ok) {
           response.json().then((book) => {
               setBook(book)
-              console.log("Book updated")
+              setEditBook(!editBook)
           });
       } else {
           response.json().then((error) => console.log(error));
