@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :books, only: [:create, :index, :show, :update]
+  resources :books, only: [:create, :index, :show, :update, :destroy]
   resources :users, only: [:create]
   resources :sessions, only: [:create]
   # Routing logic: fallback requests for React Router.

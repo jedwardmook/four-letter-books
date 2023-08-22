@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function EditBookPage({book, setBook, setEditBook, editBook}) {
   const {title, subtitle, author, description, publisher, year_published, cover_type, isbn_10,
-    isbn_13, page_number, measurements, language, condition, price, genre1, genre2, genre3, quantity } = book
+    isbn_13, page_number, measurements, language, condition, price, genre1, genre2, genre3, quantity, id } = book
   const [editTitle, setEditTitle] = useState(title)
   const [editSubtitle, setEditSubtitle] = useState(subtitle)
   const [editAuthor, setEditAuthor] = useState(author)
@@ -21,6 +22,8 @@ function EditBookPage({book, setBook, setEditBook, editBook}) {
   const [editGenre2, setEditGenre2] = useState(genre2)
   const [editGenre3, setEditGenre3] = useState(genre3)
   const [editQuantity, setEditQuantity] = useState(quantity)
+  const [removeConfirmation, setRemoveConfirmation] = useState(false)
+  const navigate = useNavigate()
 
   const handleBookUpdate = (e) => {
     e.preventDefault()
@@ -44,7 +47,7 @@ function EditBookPage({book, setBook, setEditBook, editBook}) {
     formData.append('book[genre3]', editGenre3)
     formData.append('book[quantity]', editQuantity)
     
-    fetch(`/books/${book.id}`, {
+    fetch(`/books/${id}`, {
       method: "PATCH",
       body: formData,
     })
@@ -59,8 +62,19 @@ function EditBookPage({book, setBook, setEditBook, editBook}) {
       }
   });
   }
+
+const removeBookConfirmation = () => {
+    fetch(`/books/${id}`, {
+        method: "DELETE",
+        }).then((response) => {
+            if (response.ok) {
+                navigate('/')
+        }
+    })
+}
   
   return (
+    <>
       <form onSubmit={handleBookUpdate}>
         <input 
           type="text"
@@ -152,8 +166,17 @@ function EditBookPage({book, setBook, setEditBook, editBook}) {
           value={editQuantity}
           onChange={(e) => setEditQuantity(e.target.value)}
           /> 
-        <button>Submit Changes</button>               
+        <button>Submit Changes</button>
+                     
       </form>
+      <button onClick={() => setRemoveConfirmation(!removeConfirmation)}>Remove Book</button>
+      {removeConfirmation&&
+      <dialog open>
+        <p>Are you sure</p>
+        <button onClick={removeBookConfirmation}>yes</button>
+        <button onClick={() => setRemoveConfirmation(!removeConfirmation)}>no</button>
+      </dialog>}
+    </>
   )
 }
 

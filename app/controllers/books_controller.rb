@@ -31,6 +31,16 @@ class BooksController < ApplicationController
         render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
     end
 
+    def destroy
+        book = Book.find_by(id: params[:id])
+        if book
+            book.destroy
+            head :no_content
+        else
+            render json: {errors: "Book not found"}, status: :not_found
+        end
+    end
+
 
     private
 
