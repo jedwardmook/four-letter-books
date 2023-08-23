@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../Styles/editbookpage.min.css'
 
 function EditBookPage({book, setBook, setEditBook, editBook}) {
   const {title, subtitle, author, description, publisher, year_published, cover_type, isbn_10,
@@ -74,8 +75,8 @@ const removeBookConfirmation = () => {
 }
   
   return (
-    <>
-      <form onSubmit={handleBookUpdate}>
+    <aside >
+      <form className="edit_book_page_form" onSubmit={handleBookUpdate}>
         <input 
           type="text"
           value={editTitle}
@@ -176,7 +177,7 @@ const removeBookConfirmation = () => {
         <button onClick={removeBookConfirmation}>yes</button>
         <button onClick={() => setRemoveConfirmation(!removeConfirmation)}>no</button>
       </dialog>}
-    </>
+    </aside>
   )
 }
 

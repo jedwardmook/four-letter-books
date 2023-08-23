@@ -24,7 +24,7 @@ function BooksMain() {
 
   const booksToDisplay = books && books.slice(startIndex, endIndex).map((book,index) => {
     return <tr className="books_main_data" key={index}>
-            <td>{book.title}</td>
+            <td className="books_main_title">{book.title}: {book.subtitle}</td>
             <td>{book.author}</td>              
             <td>{book.isbn_10 === 0? "N/A": book.isbn_10}</td>
             <td>{book.isbn_13 === 0 ? "N/A" : book.isbn_13}</td>
@@ -55,7 +55,7 @@ function BooksMain() {
               <th>Author</th>
               <th>Isbn 10</th>
               <th>Isbn 13</th>
-              <th>Page Number</th>
+              <th>Pages</th>
               <th>Condition</th>
               <th>Price</th>
               <th>In Stock</th>
