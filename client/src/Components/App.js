@@ -3,9 +3,8 @@ import '../Styles/App.css';
 import AddBook from './AddBook';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
-import AddForm from './AddForm';
 import SearchBook from './SearchBook';
-import AddFormFromISBN from './AddFormFromISBN';
+import AddForm from './AddForm';
 import BooksMain from './BooksMain';
 import NavBar from './NavBar';
 import BookPage from './BookPage';
@@ -32,10 +31,7 @@ function App() {
             element={<SearchBook />}
             />
           <Route path='add_book_form'
-            element={<AddFormFromISBN />}
-            />
-          <Route path='add_book_form_isbn'
-            element={<AddFormFromISBN />}
+            element={<AddForm />}
             />
           <Route exact path='/'
             element={<BooksMain />}

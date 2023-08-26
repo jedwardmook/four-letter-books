@@ -1,26 +1,32 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import '../Styles/addform.min.css'
 
 function AddForm() {
+  const location = useLocation()
+  
+  const isbn10Int = location.state? parseInt(location.state.book.isbn_10) : ''
+  const isbn13Int = location.state? parseInt(location.state.book.isbn_13) : ''
+  const splitBookLanguage = location.state? (location.state.bookLanguage[0].slice(-3)) : ""
+
   const navigate = useNavigate()
-  const [bookTitle, setBookTitle] = useState('')
-  const [bookSubtitle, setBookSubtitle] = useState('')
-  const [authorName, setAuthorName] = useState('')
-  const [bookDescription, setBookDescription] = useState('')
-  const [publisher, setPublisher] = useState('')
-  const [publishDate, setPublishDate] = useState()
-  const [physicalFormat, setPhysicalFormat] = useState('')
+  const [bookTitle, setBookTitle] = useState(location.state? location.state.book.title : '')
+  const [bookSubtitle, setBookSubtitle] = useState(location.state? location.state.book.subtitle : '')
+  const [authorName, setAuthorName] = useState(location.state? location.state.author.name : '')
+  const [bookDescription, setBookDescription] = useState(location.state? location.state.descriptionArray : '')
+  const [publisher, setPublisher] = useState(location.state? location.state.book.publishers : '')
+  const [publishDate, setPublishDate] = useState(location.state? location.state.book.publish_date : '')
+  const [physicalFormat, setPhysicalFormat] = useState(location.state? location.state.book.physical_format : '')
   const [isbn10, setIsbn10] = useState()
   const [isbn13, setIsbn13] = useState()
-  const [pageNumber, setPageNumber] = useState()
-  const [measurements, setMeasurements] = useState('')
-  const [language, setLanguage] = useState('')
+  const [pageNumber, setPageNumber] = useState(location.state? location.state.book.number_of_pages : '')
+  const [measurements, setMeasurements] = useState(location.state? location.state.book.physical_dimensions : '')
+  const [language, setLanguage] = useState(splitBookLanguage)
   const [condition, setCondition] = useState('')
   const [price, setPrice] = useState()
-  const [genre1, setGenre1] = useState('')
-  const [genre2, setGenre2] = useState('')
-  const [genre3, setGenre3] = useState('')
+  const [genre1, setGenre1] = useState(location.state? location.state.work.subjects[0] : '')
+  const [genre2, setGenre2] = useState(location.state? location.state.work.subjects[1] : '')
+  const [genre3, setGenre3] = useState(location.state? location.state.work.subjects[2] : '')
   const [quantity, setQuantity] = useState(1)
   const [errors, setErrors] = useState([])
 
@@ -60,7 +66,7 @@ function AddForm() {
         }
     })
   }
-
+  
   return (
     <main className='add_form_main'>
       <header className='add_form_header'>
@@ -107,14 +113,14 @@ function AddForm() {
           <input
             placeholder='Isbn 10'
             type='number'
-            value={isbn10}
+            value={isbn10Int}
             onChange={(e) => setIsbn10(e.target.value)}
             className='add_form_input'
           />
           <input
             placeholder='Isbn 13'
             type='number'
-            value={isbn13}
+            value={isbn13Int}
             onChange={(e) => setIsbn13(e.target.value)}
             className='add_form_input'
           />
@@ -169,7 +175,6 @@ function AddForm() {
           />
           <input
             placeholder='Price'
-            type='number'
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             className='add_form_input'

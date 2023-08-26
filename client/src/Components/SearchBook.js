@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import "../Styles/searchbook.min.css"
-import AddFormFromISBN from './AddFormFromISBN'
 import QrReaderContainer from './QrReaderContainer'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function SearchBook() {
   const [isScanner, setIsScanner] = useState(false)
@@ -13,6 +12,8 @@ function SearchBook() {
   const [descriptionArray, setDescriptionArray] = useState('')
   const [language, setLanguage] = useState()
   const [returnedError, setReturnedError] = useState()
+  const [bookFound, setBookFound] = useState(false)
+  const navigate = useNavigate()
 
 
   //Isbn fetch function
@@ -65,8 +66,8 @@ const fetchAuthor = async (author) => {
     setAuthor(data);
     console.log(data);
   } catch (error) {
-      console.log(error)
-    }
+    console.log(error)
+  }
 }
 
 //Work fetch set description in state using checkObject helper function
@@ -78,25 +79,30 @@ const fetchWork = async (work) => {
     console.log(data);
     const descriptions = data.description
     checkObject(descriptions)
+    setBookFound(!bookFound)
   } catch (error) {
-      console.log(error);
+    console.log(error);
   }
 }
 
 //checks to see if data.description from fetchWork is an object
 function checkObject(arr){
   if (arr instanceof Object){
-      setDescriptionArray(arr.value)
+    setDescriptionArray(arr.value)
   } else {
-      setDescriptionArray(arr)
+    setDescriptionArray(arr)
   }
 }
 
-  const onNewScanResult = (decodedText, decodedResult) => {
-    console.log("App [result]", decodedResult);
-    setIsbn(decodedText)
-    setIsScanner(!isScanner)
+const onNewScanResult = (decodedText, decodedResult) => {
+  console.log("App [result]", decodedResult);
+  setIsbn(decodedText)
+  setIsScanner(!isScanner)
 };
+
+const toAddFormFromIsbn = () => {
+  navigate('/add_book_form', {state:{ book:book, author: author, work:work, descriptionArray: descriptionArray, bookLanguage: language}})
+}
 
   return (
     <div>
@@ -117,14 +123,8 @@ function checkObject(arr){
       <div className='search_book_button_div'>
         <button className='search_book_scanner' onClick={() => setIsScanner(!isScanner)}>{isScanner? "Hide Scanner" : "Use Scanner" }</button>
       </div>
-      {work&&
-      <AddFormFromISBN 
-        book={book}
-        author={author}
-        work={work}
-        descriptionArray={descriptionArray}
-        bookLanguage={language}
-      />}
+      {bookFound &&
+        <button onClick={() => {toAddFormFromIsbn()}}>Book Found</button>}
       {returnedError&&
         <div className='search_book_error_div'>
           <div className='search_book_error_area'>
