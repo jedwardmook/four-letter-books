@@ -76,106 +76,199 @@ const removeBookConfirmation = () => {
   
   return (
     <aside >
-      <form className="edit_book_page_form" onSubmit={handleBookUpdate}>
-        <input 
-          type="text"
-          value={editTitle}
-          onChange={(e) => setEditTitle(e.target.value)}
+      <form className="edit_book_page_form">
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="title">Title:</label>
+          <input 
+            type="text"
+            id="title"
+            className="edit_book_input"
+            value={editTitle}
+            onChange={(e) => setEditTitle(e.target.value)}
           />
-        <input 
-          type="text"
-          value={editSubtitle}
-          onChange={(e) => setEditSubtitle(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="subtitle">Subtitle:</label>
+          <input 
+            type="text"
+            id="subtite"
+            className="edit_book_input"
+            value={editSubtitle}
+            onChange={(e) => setEditSubtitle(e.target.value)}
           />
-        <input 
-          type="text"
-          value={editAuthor}
-          onChange={(e) => setEditAuthor(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="author">Author:</label>
+          <input 
+            type="text"
+            id="author"
+            className="edit_book_input"
+            value={editAuthor}
+            onChange={(e) => setEditAuthor(e.target.value)}
           />
-        <textarea 
-          type="text"
-          value={editDescription}
-          onChange={(e) => setEditDescription(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="description">Description:</label>
+          <textarea 
+            type="text"
+            id="description"
+            className="edit_book_input"
+            value={editDescription}
+            onChange={(e) => setEditDescription(e.target.value)}
           />
-        <input 
-          type="text"
-          value={editPublisher}
-          onChange={(e) => setEditPublisher(e.target.value)}
-          /> 
-        <input
-          type="number"
-          value={editYearPublished}
-          onChange={(e) => setEditYearPublished(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="publisher">Publisher:</label>
+          <input 
+            type="text"
+            id="publisher"
+            className="edit_book_input"
+            value={editPublisher}
+            onChange={(e) => setEditPublisher(e.target.value)}
           />
-        <input 
-          type="text"
-          value={editCoverType}
-          onChange={(e) => setEditCoverType(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="year_published">Year Published:</label>
+          <input
+            type="number"
+            id="year_published"
+            className="edit_book_input"
+            value={editYearPublished}
+            onChange={(e) => setEditYearPublished(e.target.value)}
           />
-        <input
-          type="number"
-          value={editIsbn10}
-          onChange={(e) => setEditIsbn10(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="cover_type">Cover Type:</label>
+          <input 
+            type="text"
+            id="cover_type"
+            className="edit_book_input"
+            value={editCoverType}
+            onChange={(e) => setEditCoverType(e.target.value)}
           />
-        <input
-          type="number"
-          value={editIsbn13}
-          onChange={(e) => setEditIsbn13(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="isbn_10">ISBN 10:</label>
+          <input
+            type="number"
+            id="isbn_10"
+            className="edit_book_input"
+            value={editIsbn10}
+            onChange={(e) => setEditIsbn10(e.target.value)}
           />
-        <input
-          type="number"
-          value={editPageNumber}
-          onChange={(e) => setEditPageNumber(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="isbn_13">ISBN 13:</label>
+          <input
+            type="number"
+            id="isbn_13"
+            className="edit_book_input"
+            value={editIsbn13}
+            onChange={(e) => setEditIsbn13(e.target.value)}
           />
-        <input
-          type="text"
-          value={editMeasurements}
-          onChange={(e) => setEditMeasurements(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="pages">pages:</label>
+          <input
+            type="number"
+            id="pages"
+            className="edit_book_input"
+            value={editPageNumber}
+            onChange={(e) => setEditPageNumber(e.target.value)}
           />
-        <input
-          type="text"
-          value={editLanguage}
-          onChange={(e) => setEditLanguage(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="measurements">Measurements:</label>
+          <input
+            type="text"
+            id="measurements"
+            className="edit_book_input"
+            value={editMeasurements}
+            onChange={(e) => setEditMeasurements(e.target.value)}
           />
-        <input
-          type="text"
-          value={editCondition}
-          onChange={(e) => setEditCondition(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="language">Language:</label>
+          <input
+            type="text"
+            id="language"
+            className="edit_book_input"
+            value={editLanguage}
+            onChange={(e) => setEditLanguage(e.target.value)}
           />
-        <input
-          type="number"
-          value={editPrice}
-          onChange={(e) => setEditPrice(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="condition">Condition:</label>
+          <input
+            type="text"
+            id="condition"
+            className="edit_book_input"
+            value={editCondition}
+            onChange={(e) => setEditCondition(e.target.value)}
           />
-        <input
-          type="text"
-          value={editGenre1}
-          onChange={(e) => setEditGenre1(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="price">Price:</label>
+          <input
+            type="number"
+            id="price"
+            className="edit_book_input"
+            value={editPrice}
+            onChange={(e) => setEditPrice(e.target.value)}
           />
-        <input
-          type="text"
-          value={editGenre2}
-          onChange={(e) => setEditGenre2(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="genre1">Genre:</label>
+          <input
+            type="text"
+            id="genre1"
+            className="edit_book_input"
+            value={editGenre1}
+            onChange={(e) => setEditGenre1(e.target.value)}
           />
-        <input
-          type="text"
-          value={editGenre3}
-          onChange={(e) => setEditGenre3(e.target.value)}
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="genre2">Genre:</label>
+          <input
+            type="text"
+            id="genre2"
+            className="edit_book_input"
+            value={editGenre2}
+            onChange={(e) => setEditGenre2(e.target.value)}
           />
-        <input
-          type="number"
-          value={editQuantity}
-          onChange={(e) => setEditQuantity(e.target.value)}
-          /> 
-        <button>Submit Changes</button>
-                     
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="genre3">Genre:</label>
+          <input
+            type="text"
+            id="genre3"
+            className="edit_book_input"
+            value={editGenre3}
+            onChange={(e) => setEditGenre3(e.target.value)}
+          />
+        </div>
+        <div className="edit_book_label_couples_div">
+          <label className="edit_book_label" for="quantity">In Stock:</label>
+          <input
+            type="number"
+            id="quantity"
+            className="edit_book_input"
+            value={editQuantity}
+            onChange={(e) => setEditQuantity(e.target.value)}
+          />
+        </div>           
       </form>
-      <button onClick={() => setRemoveConfirmation(!removeConfirmation)}>Remove Book</button>
+      <div className="edit_book_buttons_div">
+          <button className="edit_book_submit" onClick={handleBookUpdate}>Submit</button>
+          <button className="edit_book_remove" onClick={() => setRemoveConfirmation(!removeConfirmation)}>Remove</button>
+        </div> 
       {removeConfirmation&&
-      <dialog open>
-        <p>Are you sure</p>
-        <button onClick={removeBookConfirmation}>yes</button>
-        <button onClick={() => setRemoveConfirmation(!removeConfirmation)}>no</button>
+      <dialog className="edit_book_remove_modal" open>
+        <h4>Remove book from database?</h4>
+        <div className="edit_book_modal_div">
+          <button className="edit_book_modal_button" onClick={removeBookConfirmation}>Yes</button>
+          <button className="edit_book_modal_button" onClick={() => setRemoveConfirmation(!removeConfirmation)}>No</button>
+        </div>
       </dialog>}
     </aside>
   )

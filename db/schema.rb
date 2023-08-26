@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_14_182612) do
+ActiveRecord::Schema.define(version: 2023_08_24_170952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2023_08_14_182612) do
     t.integer "year_published"
     t.string "cover_type"
     t.integer "isbn_10"
-    t.integer "isbn_13"
+    t.bigint "isbn_13"
     t.integer "page_number"
     t.string "measurements"
     t.string "language"

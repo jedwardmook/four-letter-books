@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "../Styles/searchbook.min.css"
 import AddFormFromISBN from './AddFormFromISBN'
 import QrReaderContainer from './QrReaderContainer'
-import ISBNSearchInput from './ISBNSearchInput'
+import { Link } from 'react-router-dom'
 
 function SearchBook() {
   const [isScanner, setIsScanner] = useState(false)
@@ -104,11 +104,16 @@ function checkObject(arr){
       <header className='search_book_header'>
         <h3>Search ISBN</h3>
       </header>
-      <ISBNSearchInput 
-        isbn = {isbn}
-        setIsbn = {setIsbn}
-        submitSearch={submitSearch}
-      />
+      <form onSubmit={submitSearch}>
+        <input
+          className="isbn_search_input"
+          type="number"
+          placeholder="ISBN"
+          value={isbn}
+          onChange={(e) => setIsbn(e.target.value)}
+        />
+        <button className="isbn_search_button">Search</button>
+    </form>
       <div className='search_book_button_div'>
         <button className='search_book_scanner' onClick={() => setIsScanner(!isScanner)}>{isScanner? "Hide Scanner" : "Use Scanner" }</button>
       </div>

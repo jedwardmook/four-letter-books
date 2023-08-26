@@ -3,42 +3,42 @@ import { useNavigate } from 'react-router-dom'
 import '../Styles/addform.min.css'
 
 function AddFormFromISBN({book, author, descriptionArray, bookLanguage, work}) {
-  const {
-    title = "", 
-    subtitle = "", 
-    publishers = "", 
-    publish_date = "", 
-    physical_format = '', 
-    isbn_10 = 'isbn', 
-    isbn_13 = 'isbn', 
-    number_of_pages = '', 
-    physical_dimensions = ''
-    } = book
-  const {name} = author
-  const {subjects} = work
+  // const {
+  //   title = "", 
+  //   subtitle = "", 
+  //   publishers = "", 
+  //   publish_date = "", 
+  //   physical_format = '', 
+  //   isbn_10 = 'isbn', 
+  //   isbn_13 = 'isbn', 
+  //   number_of_pages = '', 
+  //   physical_dimensions = ''
+  //   } = book
+  // const {name} = author
+  // const {subjects} = work
   
-  const isbn10Int = parseInt(isbn_10)
-  const isbn13Int = parseInt(isbn_13)
+  const isbn10Int = book && parseInt(book.isbn_10)
+  const isbn13Int = book && parseInt(book.isbn_13)
   const splitBookLanguage = bookLanguage && (bookLanguage[0].slice(-3))
 
   const navigate = useNavigate()
-  const [bookTitle, setBookTitle] = useState(title)
-  const [bookSubtitle, setBookSubtitle] = useState(subtitle)
-  const [authorName, setAuthorName] = useState(name)
-  const [bookDescription, setBookDescription] = useState(descriptionArray)
-  const [publisher, setPublisher] = useState(publishers)
-  const [publishDate, setPublishDate] = useState(publish_date)
-  const [physicalFormat, setPhysicalFormat] = useState(physical_format)
+  const [bookTitle, setBookTitle] = useState(book? book.title : '')
+  const [bookSubtitle, setBookSubtitle] = useState(book? book.subtitle : '')
+  const [authorName, setAuthorName] = useState(author? author.name : '')
+  const [bookDescription, setBookDescription] = useState(descriptionArray? descriptionArray : '')
+  const [publisher, setPublisher] = useState(book? book.publishers : '')
+  const [publishDate, setPublishDate] = useState(book? book.publish_date : '')
+  const [physicalFormat, setPhysicalFormat] = useState(book? book.physical_format : '')
   const [isbn10, setIsbn10] = useState()
   const [isbn13, setIsbn13] = useState()
-  const [pageNumber, setPageNumber] = useState(number_of_pages)
-  const [measurements, setMeasurements] = useState(physical_dimensions)
+  const [pageNumber, setPageNumber] = useState(book? book.number_of_pages : '')
+  const [measurements, setMeasurements] = useState(book? book.physical_dimensions : '')
   const [language, setLanguage] = useState(splitBookLanguage)
   const [condition, setCondition] = useState('')
   const [price, setPrice] = useState()
-  const [genre1, setGenre1] = useState(subjects[0])
-  const [genre2, setGenre2] = useState(subjects[1])
-  const [genre3, setGenre3] = useState(subjects[2])
+  const [genre1, setGenre1] = useState(work? work.subjects[0] : '')
+  const [genre2, setGenre2] = useState(work? work.subjects[1] : '')
+  const [genre3, setGenre3] = useState(work? work.subjects[2] : '')
   const [quantity, setQuantity] = useState(1)
   const [errors, setErrors] = useState([])
 

@@ -22,3 +22,16 @@ $archivo: 'Archivo', sans-serif;
     text-decoration: none;
     cursor: default;
 }
+
+@mixin bookPageButton( $borderColor, $backgroundColor, $buttonColor) {
+    background-color: $backgroundColor;
+    color: $buttonColor;
+    font-family: $archivo;
+    font-weight: 700;
+    font-size: 15px;
+    border: 3px solid $borderColor;
+    width: 90px;
+    height: 40px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}

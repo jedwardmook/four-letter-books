@@ -32,7 +32,7 @@ function App() {
             element={<SearchBook />}
             />
           <Route path='add_book_form'
-            element={<AddForm />}
+            element={<AddFormFromISBN />}
             />
           <Route path='add_book_form_isbn'
             element={<AddFormFromISBN />}

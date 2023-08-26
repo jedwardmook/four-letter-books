@@ -1,5 +1,66 @@
 @import "./Variables.scss";
 
 .edit_book_page_form {
-    @include centeredContent
+    display: flex;
+    flex-direction: column;
+}
+
+.edit_book_label_couples_div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.edit_book_label {
+    font-family: $typewriter;
+    font-weight: 700;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.edit_book_input {
+    height: 20px;
+    width: 250px;
+    border: 1.5px solid black;
+    border-radius: 7px;
+    font-family: $archivo;
+    font-size: 20px;
+    margin-bottom: 1px;
+    text-align: center;
+}
+
+.edit_book_buttons_div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.edit_book_remove_modal{
+    background-color: red;
+    justify-content: space-around;
+    color: white;
+    position: absolute;
+    font-family: $archivo;
+    font-family: 700;
+    transform: translate(-10%, -250%);
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 4px solid black;
+    border-radius: 20px;
+}
+
+.edit_book_submit {
+    @include bookPageButton(black, #d98fbd, white)
+}
+
+.edit_book_remove {
+    @include bookPageButton(black, red, white)
+}
+
+.edit_book_modal_div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.edit_book_modal_button {
+    @include bookPageButton(black, white, black)
 }

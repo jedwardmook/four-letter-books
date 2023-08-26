@@ -20,8 +20,6 @@ function BooksMain() {
           })
   }, [])
 
-
-
   const booksToDisplay = books && books.slice(startIndex, endIndex).map((book,index) => {
     return <tr className="books_main_data" key={index}>
             <td className="books_main_title">{book.title}: {book.subtitle}</td>
@@ -32,7 +30,7 @@ function BooksMain() {
             <td>{book.condition}</td>
             <td>{book.price}</td>
             <td>{book.quantity}</td>
-            <Link to={`/books/${book.id}`}><button className="books_main_controls_button">view/edit</button></Link>
+            <Link to={`/books/${book.id}`}><button className="books_main_controls_button">VIEW/EDIT</button></Link>
           </tr>
     })
 
@@ -58,7 +56,7 @@ function BooksMain() {
               <th>Pages</th>
               <th>Condition</th>
               <th>Price</th>
-              <th>In Stock</th>
+              <th>Stock</th>
               <th></th>
             </tr>
           </thead>
