@@ -1,7 +1,10 @@
 @import "./Variables.scss";
 
 .add_book_main {
-    @include centeredContent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
 }
 
 .add_book_article {
@@ -12,7 +15,6 @@
     width: 300px;
     max-width: 300px;
     background-color: aqua;
-    border: 1px solid black;
     border-radius: 5px;
     cursor: default;
 }
@@ -22,7 +24,7 @@
 }
 
 .add_book_button {
-    @include buttonSmall;
-    height: 40px;
-    background-color: bisque;
+    @include bookPageButton( black, bisque, black) ;
+    height: 50px;
+    width: 160px;
 }

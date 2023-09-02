@@ -5,7 +5,6 @@ $archivo: 'Archivo', sans-serif;
 
 @mixin centeredContent {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -34,4 +33,22 @@ $archivo: 'Archivo', sans-serif;
     height: 40px;
     border-radius: 15px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+@mixin formInput($inputWidth, $inputHeight) {
+    height: $inputHeight;
+    width: $inputWidth;
+    border: 1.5px solid black;
+    border-radius: 7px;
+    font-family: $archivo;
+    font-size: 20px;
+    margin-bottom: -15px;
+    text-align: center;
+}
+
+@mixin flexDivHorizontal {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
 }

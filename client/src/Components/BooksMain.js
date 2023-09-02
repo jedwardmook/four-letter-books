@@ -30,7 +30,7 @@ function BooksMain() {
             <td>{book.condition}</td>
             <td>{book.price}</td>
             <td>{book.quantity}</td>
-            <Link to={`/books/${book.id}`}><button className="books_main_controls_button">VIEW/EDIT</button></Link>
+            <td><Link className="books_main_link" to={`/books/${book.id}`}>...details</Link></td>
           </tr>
     })
 
