@@ -17,8 +17,8 @@ function AddForm() {
   const [publisher, setPublisher] = useState(location.state? location.state.book.publishers : '')
   const [publishDate, setPublishDate] = useState(location.state? location.state.book.publish_date : '')
   const [physicalFormat, setPhysicalFormat] = useState(location.state? location.state.book.physical_format : '')
-  const [isbn10, setIsbn10] = useState()
-  const [isbn13, setIsbn13] = useState()
+  const [isbn10, setIsbn10] = useState(isbn10Int)
+  const [isbn13, setIsbn13] = useState(isbn13Int)
   const [pageNumber, setPageNumber] = useState(location.state? location.state.book.number_of_pages : '')
   const [measurements, setMeasurements] = useState(location.state? location.state.book.physical_dimensions : '')
   const [language, setLanguage] = useState(splitBookLanguage)
@@ -196,8 +196,7 @@ function AddForm() {
               <input
                 placeholder='number'
                 id='isbn_10'
-                type='number'
-                value={isbn10Int}
+                value={isbn10}
                 onChange={(e) => setIsbn10(e.target.value)}
                 className='add_form_input_half'
               />
@@ -208,7 +207,7 @@ function AddForm() {
                 placeholder='number'
                 type='number'
                 id='isbn_13'
-                value={isbn13Int}
+                value={isbn13}
                 onChange={(e) => setIsbn13(e.target.value)}
                 className='add_form_input_half'
               />

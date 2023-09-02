@@ -30,7 +30,7 @@ function BooksMain() {
             <td>{book.condition}</td>
             <td>{book.price}</td>
             <td>{book.quantity}</td>
-            <td><Link className="books_main_link" to={`/books/${book.id}`}>...details</Link></td>
+            <td><Link className="books_main_link" to={`/books/${book.id}`}>details...</Link></td>
           </tr>
     })
 
