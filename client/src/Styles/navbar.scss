@@ -3,16 +3,18 @@
 .navbar_main {
     display: flex;
     justify-content: space-between;
-    background-color: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    background-color: #17488e;
+    box-shadow: 0px 0px 5px rgb(224, 224, 224);
 }
 
 .navbar_logo {
     margin-left: 30px;
+    color: white;
 }
 
 .navbar_links {
     display: flex;
+    align-items: center;
     width: 150px;
     justify-content: space-between;
     margin-right: 30px;
@@ -20,6 +22,10 @@
 }
 
 .navbar_link {
+    color: rgb(255, 255, 255);
     list-style-type: none;
     text-decoration: none;
+    font-family: $archivo;
+    font-weight: 700;
+    font-size: 16px;
 }

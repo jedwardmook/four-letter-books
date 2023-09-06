@@ -10,8 +10,7 @@
 
 .add_form_header {
     display: flex;
-    margin-top: -40px;
-    margin-bottom: -20px;
+    margin-bottom: -10px;
     color:black;
 }
 
@@ -20,19 +19,25 @@
     flex-direction: column;
     max-width: 100%;
     justify-content: space-evenly;
-    height: 90vh;
+    height: 100vh;
 }
 
 .add_form_input {
     @include formInput(80vh, 20px);
+    margin-bottom: 0px;
+}
+
+.add_form_input_genre {
+    @include formInput(80vh, 20px);
+    margin-bottom: -5px;
 }
 
 .add_form_input_label {
     font-family: $typewriter;
     font-weight: 700;
     font-size: 20px;
-    margin-top: -10px;
-    margin-bottom: -35px;
+    margin-top: -5px;
+    margin-bottom: -15px;
 }
 
 .add_form_input_label_vertical {
@@ -53,29 +58,85 @@
 
 .add_form_button_div {
     @include centeredContent;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .add_form_input_fourth {
-    @include formInput(19vh, 20px)
+    @include formInput(19vh, 20px);
+    margin-bottom: 0px;
 }
 
 .add_form_input_third {
-    @include formInput(25.75vh, 20px)
+    @include formInput(25.75vh, 20px);
+    margin-bottom: 0px;
 }
 
 .add_form_input_half {
-    @include formInput(39.25vh, 20px)
+    @include formInput(39.25vh, 20px);
+    margin-bottom: 0px;
 }
 
 .add_form_input_two_third {
-    @include formInput (49vh, 20px)
+    @include formInput (49vh, 20px);
+    margin-bottom: 0px;
 }
 
 .add_form_input_textarea {
-    @include formInput (80vh, 60px)
+    @include formInput (80vh, 40px);
+    margin-bottom: 0px;
+}
+
+.add_form_input_file {
+    @include formInput (80vh, 40px);
+    border: none;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.add_form_image_div {
+    display: flex;
+    margin-right: 10px;
+    border: 1px solid grey;
+}
+
+.add_form_image {
+    height: 70px;
+}
+
+.add_form_cancel {
+    background-color: white;
+    border-radius: 10px;
+    border: 3px solid black;
+    font-family: $archivo;
+    font-weight: 700;
+    height: 25px;
+    width: 25px;
+    padding-left: 5px;
+    margin-left: -25px;
+    cursor: pointer;
+}
+
+.add_form_input_file::file-selector-button {
+    @include bookPageButton(black, white, black);
+    width: 120px; 
+}
+
+.horizontal_photos_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+
+.form_button_div {
+    @include centeredContent
 }
 
 .add_form_submit_button {
     @include bookPageButton(black, white, black);
+}
+
+.none {
+    @include none
 }

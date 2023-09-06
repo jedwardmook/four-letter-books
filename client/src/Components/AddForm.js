@@ -23,11 +23,12 @@ function AddForm() {
   const [measurements, setMeasurements] = useState(location.state? location.state.book.physical_dimensions : '')
   const [language, setLanguage] = useState(splitBookLanguage)
   const [condition, setCondition] = useState('')
-  const [price, setPrice] = useState()
+  const [price, setPrice] = useState('')
   const [genre1, setGenre1] = useState(location.state? location.state.work.subjects[0] : '')
   const [genre2, setGenre2] = useState(location.state? location.state.work.subjects[1] : '')
   const [genre3, setGenre3] = useState(location.state? location.state.work.subjects[2] : '')
-  const [quantity, setQuantity] = useState()
+  const [quantity, setQuantity] = useState('')
+  const [photos, setPhotos] = useState([])
   const [errors, setErrors] = useState([])
 
   const handleSubmitBook = (e) => {
@@ -66,6 +67,21 @@ function AddForm() {
         }
     })
   }
+
+  const handlePhotosArray = files => {
+    const photosToUpload = [...photos]
+    files.some(file => {
+      return photosToUpload.push(file)
+    })
+    setPhotos(photosToUpload)
+  }
+
+  const handlePhotos = (e) => {
+    const uploadedPhotos = Array.prototype.slice.call(e.target.files)
+    handlePhotosArray(uploadedPhotos)
+  }
+
+  const photoLimit = 4
   
   return (
     <main className='add_form_main'>
@@ -133,13 +149,13 @@ function AddForm() {
               placeholder='1'
               value={genre1}
               onChange={(e) => setGenre1(e.target.value)}
-              className='add_form_input'
+              className='add_form_input_genre'
             />
             <input
               placeholder='2'
               value={genre2}
               onChange={(e) => setGenre2(e.target.value)}
-              className='add_form_input'
+              className='add_form_input_genre'
             />
             <input
               placeholder='3'
@@ -247,6 +263,28 @@ function AddForm() {
               />
             </div>
           </div>
+          <label for="photos" className="add_form_input_label_vertical">{photos.length === photoLimit? "Limit Reached" : "Add Photos(limit 4)"}</label>
+          <div className='horizontal_photos_div'>
+              {photos && photos.map ((photo, index) => {
+                return <div className="add_form_image_div" key={index}>
+                          <img className="add_form_image" src={URL.createObjectURL(photo)} alt='upload' />
+                          <button type="button" 
+                                  className="add_form_cancel" 
+                                  onClick={() => setPhotos((photos) => {
+                                            return photos.filter((photo, i) => i !== index);
+                                              })}>X
+                          </button>
+                        </div>
+                        })}
+          </div>
+              <input
+                id='photos'
+                type='file'
+                accept=".jpg, .jpeg, .png, .webp"
+                onChange={handlePhotos}
+                className={photos.length === photoLimit? "none":'add_form_input_file'}
+                disabled={photos.length === photoLimit}
+              />
           <div className='form_button_div'>
             <button className='add_form_submit_button'>Submit</button>
           </div>

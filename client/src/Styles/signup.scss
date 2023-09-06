@@ -2,6 +2,7 @@
 
 .sign_up_main {
     @include centeredContent;
+    height: 90vh;
 }
 
 .sign_up_form_container {
@@ -10,8 +11,8 @@
     flex-direction: column;
     border: none;
     border-radius: 10px;
-    width: 300px;
-    height: 550px;
+    width: 50vw;
+    height: 80vh;
     justify-content: center;
     align-items: center;
 }

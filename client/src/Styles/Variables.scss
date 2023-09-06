@@ -52,3 +52,7 @@ $archivo: 'Archivo', sans-serif;
     align-content: center;
     justify-content: space-between;
 }
+
+@mixin none {
+    display: none;
+}
