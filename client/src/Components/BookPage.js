@@ -21,7 +21,11 @@ function BookPage() {
         }
     })
   }, [bookIdToFetch])
-  
+
+  const imagesToDisplay = book && book.image_urls !== null? book.image_urls.map(image_url => {
+    return <img className="image" src={image_url.url} alt={image_url.file_name}/>
+  }):""
+
 
   return (
     book? 
@@ -38,6 +42,8 @@ function BookPage() {
       editBook = {editBook}
       />
       :
+      <div>
+      {imagesToDisplay}
       <table >
         <tbody>
         <tr className="book_page_table_row">
@@ -114,6 +120,7 @@ function BookPage() {
         </tr>
         </tbody>
       </table>
+      </div>
       }
       </div>
     </main>:<><h1>Loading</h1></>

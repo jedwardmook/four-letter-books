@@ -52,6 +52,9 @@ function AddForm() {
     formData.append('book[genre2]', genre2)
     formData.append('book[genre3]', genre3)
     formData.append('book[quantity]', quantity)
+    photos.forEach((photo, index) =>
+      formData.append(`images[]`, photo)
+    );
 
     fetch('/books', {
       method: "POST",
@@ -67,6 +70,7 @@ function AddForm() {
         }
     })
   }
+
 
   const handlePhotosArray = files => {
     const photosToUpload = [...photos]

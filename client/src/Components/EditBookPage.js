@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import '../Styles/editbookpage.min.css'
 
 function EditBookPage({book, setBook, setEditBook, editBook}) {
@@ -61,8 +61,15 @@ function EditBookPage({book, setBook, setEditBook, editBook}) {
       } else {
           response.json().then((error) => console.log(error));
       }
-  });
+    });
   }
+
+
+const editBookImagesToDisplay = book.image_urls !== null && book.image_urls.map ((image_url) => {
+  return<Link to={`/books/${book.id}/image/${image_url.id}`} state= {image_url}>
+          <img className="image" src={image_url.url} alt={image_url.url} />
+        </Link>
+})
 
 const removeBookConfirmation = () => {
     fetch(`/books/${id}`, {
@@ -73,9 +80,13 @@ const removeBookConfirmation = () => {
         }
     })
 }
+
+const booksAttachedAmount = book.image_urls !== null? book.image_urls.length : 0
+console.log(booksAttachedAmount)
   
   return (
     <aside >
+      <div>{editBookImagesToDisplay}</div>
       <form className="edit_book_page_form">
         <div className="edit_book_label_couples_div">
           <label className="edit_book_label" for="title">Title:</label>

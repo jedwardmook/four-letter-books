@@ -8,6 +8,7 @@ import AddForm from './AddForm';
 import BooksMain from './BooksMain';
 import NavBar from './NavBar';
 import BookPage from './BookPage';
+import EditImagePage from './EditImagePage';
 
 
 
@@ -38,6 +39,9 @@ function App() {
             />
           <Route exact path='/books/:bookId'
             element={<BookPage />}
+            />
+          <Route exact path='/books/:bookId/image/:imageId'
+            element={<EditImagePage />}
             />
         </Routes>
       </div>

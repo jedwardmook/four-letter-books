@@ -17,5 +17,6 @@ class BookSerializer < ActiveModel::Serializer
              :genre1,
              :genre2,
              :genre3,
-             :quantity
+             :quantity,
+             :image_urls
 end
