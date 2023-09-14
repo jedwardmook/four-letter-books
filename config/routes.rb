@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :books, only: [:create, :index, :show, :update, :destroy]
-  get '/show_images/:params', to: 'books#show_images'
+  patch '/remove_image/:params1/image/:params2', to: 'books#remove_image'
   resources :users, only: [:create]
   resources :sessions, only: [:create]
   # Routing logic: fallback requests for React Router.

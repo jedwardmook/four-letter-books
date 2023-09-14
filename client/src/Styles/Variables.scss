@@ -9,6 +9,21 @@ $archivo: 'Archivo', sans-serif;
     align-items: center;
 }
 
+@mixin fullScreen ($backgroundColor) {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: $backgroundColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y:scroll;
+    overflow-x:hidden; 
+
+}
+
 @mixin buttonSmall {
     text-align: center;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);

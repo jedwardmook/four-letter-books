@@ -14,29 +14,26 @@ class BooksController < ApplicationController
         end
     end
 
-    # def show_images
-    #     book = Book.find_by(id: params[:params])
-    #     images = book.images
-
-    #     if images.present?
-    #         images.each do |image|
-    #             {
-    #                 url: rails_blob_url(image),
-    #                 filename: image.filename.to_s,
-    #                 content_type: image.content_type
-    #               }
-    #         end
-    #     render json: {images: images}
-    #     else
-    #         render json: {error: 'Images not found' },status: :not_found
-    #     end
-    # end
-
     def update
         book = Book.find_by(id: params[:id])
         if book
-            book.update( book_params)
+            book.update(book_params)
             render json: book, status: :accepted
+        else
+            render json: { error: "Book not found"}, status: :not_found
+        end
+    end
+
+    def remove_image
+        book = Book.find_by(id: params[:params1])
+        if book
+            image = book.images.find_by(id: params[:params2])
+                if image
+                    image.purge
+                    render json: book, status: :accepted
+                else
+                    render json: {error: "Image not found"}, status: :not_found
+                end
         else
             render json: { error: "Book not found"}, status: :not_found
         end

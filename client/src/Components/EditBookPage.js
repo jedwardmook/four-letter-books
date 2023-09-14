@@ -66,7 +66,7 @@ function EditBookPage({book, setBook, setEditBook, editBook}) {
 
 
 const editBookImagesToDisplay = book.image_urls !== null && book.image_urls.map ((image_url) => {
-  return<Link to={`/books/${book.id}/image/${image_url.id}`} state= {image_url}>
+  return<Link to={`/books/${book.id}/image/${image_url.id}`} state= {{book: book, image_url:image_url}}>
           <img className="image" src={image_url.url} alt={image_url.url} />
         </Link>
 })
