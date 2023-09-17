@@ -29,6 +29,20 @@
     text-align: center;
 }
 
+.edit_book_image_div {
+    @include centeredContent
+}
+
+.edit_form_image {
+    height: 70px;
+}
+
+.edit_book_input_file::file-selector-button {
+    @include bookPageButton(black, white, black);
+    margin-top: 5px;
+    width: 120px;
+}
+
 .edit_book_buttons_div {
     display: flex;
     justify-content: space-between;

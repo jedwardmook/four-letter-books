@@ -18,6 +18,9 @@ class BooksController < ApplicationController
         book = Book.find_by(id: params[:id])
         if book
             book.update(book_params)
+            if params[:images]
+                book.images.attach(params[:images])
+            end
             render json: book, status: :accepted
         else
             render json: { error: "Book not found"}, status: :not_found

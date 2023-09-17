@@ -23,6 +23,7 @@ function EditBookPage({book, setBook, setEditBook, editBook}) {
   const [editGenre2, setEditGenre2] = useState(genre2)
   const [editGenre3, setEditGenre3] = useState(genre3)
   const [editQuantity, setEditQuantity] = useState(quantity)
+  const [newPhotos, setNewPhotos] = useState([])
   const [removeConfirmation, setRemoveConfirmation] = useState(false)
   const navigate = useNavigate()
 
@@ -47,6 +48,11 @@ function EditBookPage({book, setBook, setEditBook, editBook}) {
     formData.append('book[genre2]', editGenre2)
     formData.append('book[genre3]', editGenre3)
     formData.append('book[quantity]', editQuantity)
+    if (newPhotos.length > 0){
+      newPhotos.forEach((photo, index) =>
+        formData.append(`images[]`, photo)
+      );
+    }
     
     fetch(`/books/${id}`, {
       method: "PATCH",
@@ -82,7 +88,22 @@ const removeBookConfirmation = () => {
 }
 
 const booksAttachedAmount = book.image_urls !== null? book.image_urls.length : 0
-console.log(booksAttachedAmount)
+const photoLimit = 4
+
+const handleNewPhotosArray = files => {
+  const photosToUpload = [...newPhotos]
+  files.some(file => {
+    return photosToUpload.push(file)
+  })
+  setNewPhotos(photosToUpload)
+}
+
+const handleNewPhotos = (e) => {
+  const uploadedPhotos = Array.prototype.slice.call(e.target.files)
+  handleNewPhotosArray(uploadedPhotos)
+}
+
+
   
   return (
     <aside >
@@ -267,7 +288,29 @@ console.log(booksAttachedAmount)
             value={editQuantity}
             onChange={(e) => setEditQuantity(e.target.value)}
           />
-        </div>           
+        </div>
+        <div className="edit_book_image_div">
+        {newPhotos && newPhotos.map ((photo, index) => {
+                return <div className="edit_book_image_div" key={index}>
+                          <img className="edit_form_image" src={URL.createObjectURL(photo)} alt='upload' />
+                          <button type="button" 
+                                  className="add_form_cancel" 
+                                  onClick={() => setNewPhotos((photos) => {
+                                            return photos.filter((photo, i) => i !== index);
+                                              })}>X
+                          </button>
+                        </div>
+                        })}
+        </div>
+        {booksAttachedAmount + newPhotos.length < photoLimit &&
+        <input
+                id='photos'
+                type='file'
+                accept=".jpg, .jpeg, .png, .webp"
+                onChange={handleNewPhotos}
+                className={newPhotos.length === photoLimit? "none":'edit_book_input_file'}
+                disabled={newPhotos.length + booksAttachedAmount === photoLimit}
+              />}         
       </form>
       <div className="edit_book_buttons_div">
           <button className="edit_book_submit" onClick={handleBookUpdate}>Submit</button>
