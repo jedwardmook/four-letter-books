@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Html5QrcodeScanner } from "html5-qrcode";
+import "../Styles/searchbook.min.css"
 
 const qrcodeRegionId = "html5qr-code-full-region";
 
@@ -42,7 +43,12 @@ function QrReaderContainer(props) {
     }, []);
 
     return (
-        <div id={qrcodeRegionId} />
+      <>
+        <div className='qr_reader_div' id={qrcodeRegionId} />
+        <div>
+          <button className='search_book_scanner' onClick={() => props.setIsScanner(!props.isScanner)}>{props.isScanner? "Hide Scanner" : "Use Scanner" }</button>
+        </div>
+      </>
     );
 };
 

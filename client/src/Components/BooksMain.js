@@ -22,6 +22,7 @@ function BooksMain() {
 
   const booksToDisplay = books && books.slice(startIndex, endIndex).map((book,index) => {
     return <tr className="books_main_data" key={index}>
+            <td>{book.image_urls? <img className='books_main_image' src={book.image_urls[0].url} alt='cover'/>: ""}</td>
             <td className="books_main_title">{book.title}: {book.subtitle}</td>
             <td>{book.author}</td>              
             <td>{book.isbn_10 === 0? "N/A": book.isbn_10}</td>
@@ -49,6 +50,7 @@ function BooksMain() {
         <table className="books_main_table">
           <thead className="books_main_table_head">
             <tr>
+              <th></th>
               <th>Title</th>
               <th>Author</th>
               <th>Isbn 10</th>

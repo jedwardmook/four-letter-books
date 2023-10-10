@@ -106,20 +106,20 @@ const toAddFormFromIsbn = () => {
 
   return (
     <div>
-    <main className='search_book_main'>
+    {!isScanner ? <main className='search_book_main'>
       <header className='search_book_header'>
         <h3>Search ISBN</h3>
       </header>
       <form onSubmit={submitSearch}>
         <input
           className="isbn_search_input"
-          type="number"
+          type="text"
           placeholder="ISBN"
           value={isbn}
           onChange={(e) => setIsbn(e.target.value)}
         />
         <button className="isbn_search_button">Search</button>
-    </form>
+      </form>
       <div className='search_book_button_div'>
         <button className='search_book_scanner' onClick={() => setIsScanner(!isScanner)}>{isScanner? "Hide Scanner" : "Use Scanner" }</button>
       </div>
@@ -132,13 +132,14 @@ const toAddFormFromIsbn = () => {
             <button className="search_book_error_button" onClick={() => setReturnedError("")}>Okay</button>
           </div>
         </div>}
-    </main>
-         {isScanner &&
+    </main> :
           <QrReaderContainer 
             fps={10}
             qrbox={350}
             disableFlip={false}
             qrCodeSuccessCallback ={onNewScanResult}
+            setIsScanner = {setIsScanner}
+            isScanner = {isScanner}
           />}
     </div>
   )

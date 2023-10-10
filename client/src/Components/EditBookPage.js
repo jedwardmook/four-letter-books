@@ -107,7 +107,10 @@ const handleNewPhotos = (e) => {
   
   return (
     <aside >
-      <div>{editBookImagesToDisplay}</div>
+      <div>
+        <h5>Click to edit</h5>
+        {editBookImagesToDisplay}
+      </div>
       <form className="edit_book_page_form">
         <div className="edit_book_label_couples_div">
           <label className="edit_book_label" for="title">Title:</label>
