@@ -66,6 +66,14 @@ function BooksMain() {
             {booksToDisplay}
           </tbody>
         </table>
+        <div>
+          <label htmlFor="search_books_input">Search Database</label>
+          <input 
+            id='search_books_input'
+            placeholder='Search'
+            className='books_main_search_input'
+            />
+        </div>
         {booksToDisplay&&
         <div className="books_main_controls_div">
           {startIndex > 0 &&<button onClick={lastPage} className="books_main_controls_button">&lt;</button>}
