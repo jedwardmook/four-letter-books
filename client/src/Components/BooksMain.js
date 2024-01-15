@@ -7,6 +7,7 @@ function BooksMain() {
   const [books, setBooks] = useState()
   const [startIndex, setStartIndex] = useState(0)
   const [endIndex, setEndIndex] = useState(20)
+  const [searchInput, setSearchInput] = useState()
 
   useEffect(() => {
       fetch('/books')
@@ -34,6 +35,10 @@ function BooksMain() {
             <td><Link className="books_main_link" to={`/books/${book.id}`}>details...</Link></td>
           </tr>
     })
+
+  const searchInputOnChange = (e) => {
+    setSearchInput(e.target.value)
+  };
 
   function nextPage(){
     setStartIndex(startIndex + 20)
@@ -72,6 +77,7 @@ function BooksMain() {
             id='search_books_input'
             placeholder='Search'
             className='books_main_search_input'
+            onChange={searchInputOnChange}
             />
         </div>
         {booksToDisplay&&
