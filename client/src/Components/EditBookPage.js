@@ -108,7 +108,7 @@ const handleNewPhotos = (e) => {
   return (
     <aside >
       <div>
-        <h5>Click to edit</h5>
+        {editBookImagesToDisplay.length > 0 &&<h5>Click to edit</h5>}
         {editBookImagesToDisplay}
       </div>
       <form className="edit_book_page_form">

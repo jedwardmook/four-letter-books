@@ -2,7 +2,7 @@ Book.destroy_all
 Book.reset_pk_sequence
 
 Book.create!(
-    title: "Fake Book", 
+    title: "The Slide", 
     subtitle: "Subtitle", 
     author: "author", 
     description: "A description about the book", 
