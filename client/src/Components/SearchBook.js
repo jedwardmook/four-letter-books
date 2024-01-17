@@ -28,7 +28,7 @@ function SearchBook() {
           console.log(data);
           splitAuthor(data);
           splitWork(data);
-          const splitLanguage = data.languages[0]
+          const splitLanguage = data.languages? data.language[0] : ["Eng"]
           setLanguage(Object.values(splitLanguage))
         } catch (error) {
           setReturnedError("No ISBN found")

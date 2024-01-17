@@ -6,8 +6,6 @@ import BooksFilter from './BooksFilter'
 
 function BooksMain() {
   const [books, setBooks] = useState()
-  const [startIndex, setStartIndex] = useState(0)
-  const [endIndex, setEndIndex] = useState(20)
   const [searchInputValue, setSearchInputValue] = useState()
 
   useEffect(() => {
@@ -22,10 +20,10 @@ function BooksMain() {
           })
   }, [])
 
-  // const filterBooks = books?.filter(book => {
-  //   return Object.values(book).some(value =>
-  //     String(value).toLowerCase().includes(searchInputValue?.toLowerCase()))
-  // })
+  const filterBooks = books?.filter(book => {
+    return Object.values(book).some(value =>
+      String(value).toLowerCase().includes(searchInputValue?.toLowerCase()))
+  })
 
   // const filteredBooksToDisplay = filterBooks?.slice(startIndex, endIndex).map((book,index) => {
   //   return <tr className="books_main_data" key={index}>
@@ -61,42 +59,17 @@ function BooksMain() {
     setSearchInputValue(e.target.value)
   };
 
-  function nextPage(){
-    setStartIndex(startIndex + 20)
-    setEndIndex(endIndex + 20)
-  }  
-
-  function lastPage(){
-    setStartIndex(startIndex - 20)
-    setEndIndex(endIndex - 20)
-  } 
+  
 
   return ( 
-      <main className="books_main_main">
-        <h2>Books Archived</h2>
-          <BooksContainer 
-            books={books}
-            startIndex={startIndex}
-            endIndex={endIndex}
-            />
-          <BooksFilter
-            searchInputOnChange={searchInputOnChange}
-            />
-        {/* <div>
-          <label htmlFor="search_books_input">Search Database</label>
-          <input 
-            id='search_books_input'
-            placeholder='Search'
-            className='books_main_search_input'
-            onChange={searchInputOnChange}
-            />
-        </div> */}
-        {/* {booksToDisplay&&
-        <div className="books_main_controls_div">
-          {startIndex > 0 &&<button onClick={lastPage} className="books_main_controls_button">&lt;</button>}
-            <p className="books_main_controls_display">Showing: {startIndex} - {startIndex + booksToDisplay.length}</p>
-          {booksToDisplay.length > endIndex - 1 &&<button onClick={nextPage} className="books_main_controls_button">&gt;</button>}
-        </div>} */}
+    <main className="books_main_main">
+      <h2>Books Archived</h2>
+        <BooksContainer 
+          filterBooks={filterBooks}
+          />
+        <BooksFilter
+          searchInputOnChange={searchInputOnChange}
+          />
     </main>
   )
 }
