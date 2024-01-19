@@ -2,15 +2,17 @@
 
 .log_in_main {
     @include centeredContent
+    height: 90vh;
 }
 
 .log_in_container {
+    // margin-top: 60px;
     background-color: antiquewhite;
     display: flex;
     flex-direction: column;
     border: none;
     border-radius: 10px;
-    width: 300px;
+    width: 60vw;
     height: 550px;
     justify-content: center;
     align-items: center;

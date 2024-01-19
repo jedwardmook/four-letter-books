@@ -63,7 +63,7 @@ function BooksMain() {
 
   return ( 
     <main className="books_main_main">
-      <h2>Books Archived</h2>
+      <h2>Books Database</h2>
         <BooksContainer 
           filterBooks={filterBooks}
           />

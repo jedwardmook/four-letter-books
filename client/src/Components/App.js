@@ -9,6 +9,8 @@ import BooksMain from './BooksMain';
 import NavBar from './NavBar';
 import BookPage from './BookPage';
 import EditImagePage from './EditImagePage';
+import StoreFront from './StoreFront';
+import { BooksProvider } from '../context/books';
 
 
 
@@ -18,7 +20,11 @@ function App() {
     <Router>
       <div className="App">
         <NavBar/>
+        <BooksProvider>
         <Routes>
+          <Route path='store'
+            element= {<StoreFront />}
+            />
           <Route path='login'
             element= {<LoginForm />}
             />
@@ -44,6 +50,7 @@ function App() {
             element={<EditImagePage />}
             />
         </Routes>
+        </BooksProvider>
       </div>
     </Router>
   );
