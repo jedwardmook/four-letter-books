@@ -4,9 +4,16 @@ import { BooksContext } from '../context/books'
 function StoreFront() {
   const { books } = useContext(BooksContext)
 
-  console.log(books)
+  const booksToDisplay = books?.map((book) => {
+    return (
+      <div key={book.id}>{book.title}</div>
+    )
+  })
   return (
-    <div>StoreFront</div>
+    <div>
+      StoreFront
+      {booksToDisplay}
+    </div>
   )
 }
 
