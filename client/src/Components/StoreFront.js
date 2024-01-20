@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { BooksContext } from '../context/books'
 
 function StoreFront() {
@@ -6,7 +7,9 @@ function StoreFront() {
 
   const booksToDisplay = books?.map((book) => {
     return (
-      <div key={book.id}>{book.title}</div>
+      <Link to={`/store/${book.id}`}>
+          <div key={book.id}>{book.title}</div>
+      </Link>
     )
   })
   return (

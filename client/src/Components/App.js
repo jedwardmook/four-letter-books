@@ -11,6 +11,7 @@ import BookPage from './BookPage';
 import EditImagePage from './EditImagePage';
 import StoreFront from './StoreFront';
 import { BooksProvider } from '../context/books';
+import RetailBookPage from './RetailBookPage';
 
 
 
@@ -24,6 +25,9 @@ function App() {
         <Routes>
           <Route path='store'
             element= {<StoreFront />}
+            />
+          <Route path="/store/:bookId"
+            element={<RetailBookPage />}
             />
           <Route path='login'
             element= {<LoginForm />}
