@@ -23,7 +23,8 @@ function RetailBookPage() {
   return ( 
     book?
     <main>
-        <RBPhotosViewer />
+        <RBPhotosViewer 
+            photos = {book.image_urls}/>
         <p>{book.title}</p>
         <p>${book.price}</p>
         <p>{book.author}</p>

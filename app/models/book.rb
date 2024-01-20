@@ -12,6 +12,7 @@ class Book < ApplicationRecord
                 }
             end
         else
+            []
         end
     end
 

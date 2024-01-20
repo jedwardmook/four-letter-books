@@ -8,7 +8,7 @@ function BooksContainer({filterBooks}) {
 
     const booksToDisplay = filterBooks?.slice(startIndex, endIndex).map((book,index) => {
         return <tr className="books_main_data" key={index}>
-                <td>{book.image_urls? <img className='books_main_image' src={book.image_urls[0].url} alt='cover'/>: ""}</td>
+                <td>{book.image_urls.length > 0 ? <img className='books_main_image' src={book.image_urls[0].url} alt='cover'/>: ""}</td>
                 <td className="books_main_title">{book.title}: {book.subtitle}</td>
                 <td>{book.author}</td>              
                 <td>{book.isbn_13 === 0 ? "N/A" : book.isbn_13}</td>
