@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { BooksContext } from '../context/books'
+import StoreNavBar from './StoreNavBar'
 
 function StoreFront() {
   const { books } = useContext(BooksContext)
@@ -14,7 +15,7 @@ function StoreFront() {
   })
   return (
     <div>
-      StoreFront
+      <StoreNavBar />
       {booksToDisplay}
     </div>
   )
